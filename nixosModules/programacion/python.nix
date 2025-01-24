@@ -20,6 +20,7 @@ in
       python3
       (python3.withPackages (ps: with ps; [ pip ]))
       thefuck
+      pywalfox-native
     ];
   };
 }

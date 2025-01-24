@@ -13,7 +13,7 @@
 /* -----------------------------------------------------
  * Import Pywal colors 
  * ----------------------------------------------------- */
-/* @import 'style-light.css'; */
+/* @import '/home/nbr/.cache/wal/colors-waybar.css'; */
 
 /* -----------------------------------------------------
  * General 
@@ -26,10 +26,9 @@
 }
 
 window#waybar {
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(10,10,10,0.35);
     border-bottom: 0px solid #ffffff;
     /* color: #FFFFFF; */
-    background: transparent;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -118,14 +117,15 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 #taskbar {
-    background: @backgroundlight;
+    background: @backgrounddark;
     margin: 3px 15px 3px 0px;
     padding:0px;
+    color: @textcolor1;
     border-radius: 15px;
     font-weight: normal;
     font-style: normal;
     opacity:0.8;
-    border: 3px solid @backgroundlight;
+    border: 3px solid @bordercolor;
 }
 
 #taskbar button {
@@ -486,4 +486,6 @@ window#waybar.empty #window {
     -gtk-icon-effect: highlight;
 }
 
-
+#cava {
+    color: @textcolor2;
+}

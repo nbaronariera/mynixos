@@ -33,5 +33,7 @@
       ];
       theme = "gnzh";
     };
+
+    initExtra = "(cat ~/.cache/wal/sequences &)";
   };
 }

@@ -43,6 +43,7 @@ in
             "wlr/taskbar"
             "group/quicklinks"
             #"hyprland/window"
+            "cava"
             "custom/empty"
           ];
 
@@ -61,7 +62,7 @@ in
             #"group/hardware"
             #"group/tools"
             "tray"
-            "custom/hypridle"
+            #"custom/hypridle"
             "custom/windowsvm"
             "custom/exit"
             #"custom/ml4w-welcome"

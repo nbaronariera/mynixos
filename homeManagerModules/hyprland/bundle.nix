@@ -15,6 +15,7 @@ in
     ./waybar/waybar.nix
     ./wlogout.nix
     ./hyprlock.nix
+    ./yazi.nix
   ];
 
   config = lib.mkIf enableAllHyprland {
@@ -24,5 +25,6 @@ in
     my.enableSystools = true;
     my.enableWaybar = true;
     my.enableWLogout = true;
+    my.enableYazi = true;
   };
 }

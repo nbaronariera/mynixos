@@ -10,6 +10,8 @@
     ./programacion/python.nix
     ./programacion/rust.nix
     ./programacion/rustrover.nix
+    ./programacion/vscode.nix
+    ./programacion/krita.nix
     ./hyprland/cachix.nix
     ./hyprland/hyprlandModule.nix
   ];

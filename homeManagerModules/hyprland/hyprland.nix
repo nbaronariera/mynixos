@@ -11,7 +11,6 @@ let
 
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
-    sleep 1
     bash $HOME/Documentos/swww_wallpapers/swww.sh
   '';
 in
@@ -28,15 +27,23 @@ in
     home.sessionVariables.NIXOS_OZONE_WL = "1";
     wayland.windowManager.hyprland = {
       enable = true;
+
       plugins = [ ];
       settings = {
         exec-once = [
           ''${startupScript}/bin/start''
+          "hyprctl setcursor Bibata-Modern-Classic 24"
+          "wlsunset -l 39.49 -L -0.38"
+        ];
+
+        source = [
+          "$HOME/.cache/wal/colors-hyprland.conf"
         ];
 
         env = [
           "XCURSOR_SIZE,24"
           "HYPRCURSOR_SIZE,24"
+          "HYPRCURSOR_THEME, Bibata-Modern-Classic"
         ];
 
         general = {
@@ -46,8 +53,8 @@ in
           border_size = 2;
 
           # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-          "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-          "col.inactive_border" = "rgba(595959aa)";
+          "col.active_border" = "$color1 $color1 $color2  45deg";
+          "col.inactive_border" = "$foreground";
 
           # Set to true enable resizing windows by clicking and dragging on borders and gaps
           resize_on_border = false;
@@ -62,13 +69,13 @@ in
           rounding = 10;
 
           # Change transparency of focused and unfocused windows
-          active_opacity = 1.0;
-          inactive_opacity = 1.0;
+          active_opacity = 0.99;
+          inactive_opacity = 0.95;
 
           shadow = {
             enabled = true;
-            range = 4;
-            render_power = 3;
+            range = 6;
+            render_power = 4;
             color = "rgba(1a1a1aee)";
           };
 
@@ -175,7 +182,7 @@ in
         "$mod" = "SUPER";
         "$terminal" = "kitty";
         "$fileManager" = "dolphin";
-        "$menu" = "rofi -show drun";
+        "$menu" = "~/Documentos/NixOs-Conf/homeManagerModules/hyprland/rofi/launcher.sh";
 
         bind =
           [
@@ -184,9 +191,17 @@ in
             "$mod SHIFT, R, exec, hyprctl reload"
 
             "$mod, L, exec, hyprlock"
-            "CONTROL_ALT, DEL,exec,wlogout"
+            "Ctrl+Alt,Delete,exec,wlogout"
+            "Ctrl+Shift,Escape,exec,kitty -e btop"
+
+            # Ajustar el volumen
+            ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"  # Subir volumen 5%
+            ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"  # Bajar volumen 5%
+            ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"  # Silenciar/activar sonido
+
 
             "$mod, RETURN, exec, $terminal"
+            "$mod, Y, exec, kitty -e yazi"
             "$mod, Q, killactive,"
             "$mod, E, exec, $fileManager"
             "$mod, V, togglefloating,"
@@ -231,10 +246,10 @@ in
 
         # Laptop multimedia keys for volume and LCD brightness
         bindel = [
-          ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-          ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-          ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-          ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+          ",XF86AudioRaiseVolume, exec, pactl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+          ",XF86AudioLowerVolume, exec, pactl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          ",XF86AudioMute, exec, pactl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ",XF86AudioMicMute, exec, pactl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
           ",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
           ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
         ];

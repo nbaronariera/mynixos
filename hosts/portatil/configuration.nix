@@ -28,6 +28,8 @@
   my.enableHeroic = true;
   my.enableRust = true;
   my.enablePython = true;
+  my.enableKrita = true;
+  my.enableVSCode = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -111,6 +113,7 @@
   };
 
   hardware.pulseaudio.enable = false;
+  hardware.bluetooth.enable = true;
   hardware.graphics.enable = true;
   services.pipewire = {
     enable = true;
@@ -144,6 +147,8 @@
       kdePackages.qtsvg
       kdePackages.kio-fuse
       kdePackages.kio-extras
+      libsForQt5.qtstyleplugin-kvantum
+      libsForQt5.qt5ct
       dolphin
       fira-code
     ];
@@ -201,6 +206,12 @@
     mesa
     vulkan-loader
     vulkan-tools
+    neofetch
+    jq
+    blueman
+    wev
+    brightnessctl
+    wlsunset
   ];
 
   programs.zsh.enable = true;
