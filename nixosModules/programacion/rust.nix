@@ -20,6 +20,8 @@ in
       cargo
       rustc
       rustup
+      gcc
+      cargo-generate
     ];
   };
 }

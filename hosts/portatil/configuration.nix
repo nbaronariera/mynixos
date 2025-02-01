@@ -112,6 +112,8 @@
     rtkit.enable = true;
   };
 
+  hardware.keyboard.qmk.enable = true;
+
   hardware.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
   hardware.graphics.enable = true;
@@ -142,17 +144,26 @@
       "libvirtd"
     ];
     packages = with pkgs; [
-      kdePackages.kate
-      kdePackages.qtwayland
-      kdePackages.qtsvg
-      kdePackages.kio-fuse
-      kdePackages.kio-extras
-      libsForQt5.qtstyleplugin-kvantum
-      libsForQt5.qt5ct
+      dolphin
+      fira-code
+      via
+    ];
+  };
+
+  users.users.luca = {
+    isNormalUser = true;
+    description = "Luca Lucae";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+    ];
+    packages = with pkgs; [
       dolphin
       fira-code
     ];
   };
+
 
   fonts.fontDir.enable = true;
 
@@ -208,8 +219,9 @@
     vulkan-tools
     neofetch
     jq
+    nh
     blueman
-    wev
+    unrar
     brightnessctl
     wlsunset
   ];

@@ -34,6 +34,8 @@
       theme = "gnzh";
     };
 
-    initExtra = "(cat ~/.cache/wal/sequences &)";
+    initExtra = "
+      (cat ~/.cache/wal/sequences &)
+    ";
   };
 }

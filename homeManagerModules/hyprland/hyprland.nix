@@ -11,7 +11,7 @@ let
 
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar &
-    bash $HOME/Documentos/swww_wallpapers/swww.sh
+    bash $HOME/Imágenes/swww_wallpapers/swww.sh
   '';
 in
 {
