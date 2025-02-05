@@ -199,6 +199,9 @@ in
             ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"  # Bajar volumen 5%
             ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"  # Silenciar/activar sonido
 
+            "$mod, minus, resizeactive, -20 -20"
+            "$mod, plus, resizeactive, 20 20"
+
 
             "$mod, RETURN, exec, $terminal"
             "$mod, Y, exec, kitty -e yazi"

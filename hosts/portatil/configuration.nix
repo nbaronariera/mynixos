@@ -147,6 +147,8 @@
       dolphin
       fira-code
       via
+      notion-app-enhanced
+      transmission_4-gtk
     ];
   };
 
@@ -161,6 +163,7 @@
     packages = with pkgs; [
       dolphin
       fira-code
+      notion-app-enhanced
     ];
   };
 

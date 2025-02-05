@@ -17,34 +17,17 @@ in
 
   config = lib.mkIf enableKVM {
     environment.systemPackages = with pkgs; [
-      virt-manager
-      virt-viewer
-      spice
-      spice-gtk
-      spice-protocol
-      win-virtio
-      win-spice
-      qemu
       virtio-win
     ];
-    users.groups.libvirtd.members = [ "nbr" ];
 
-    virtualisation = {
-      libvirtd = {
-        enable = true;
-        qemu = {
-          swtpm.enable = true;
-          ovmf.enable = true;
-          ovmf.packages = [ pkgs.OVMFFull.fd ];
-        };
-      };
-      spiceUSBRedirection.enable = true;
-    };
+    programs.virt-manager.enable = true;
+    users.groups.libvirtd.members = ["nbr"];
+    virtualisation.libvirtd.enable = true;
+    virtualisation.spiceUSBRedirection.enable = true;
+
 
     services.spice-vdagentd.enable = true;
-    boot.kernelModules = [
-      "kvm-amd"
-      "kvm-intel"
-    ];
+    services.spice-webdavd.enable = true;
+    services.qemuGuest.enable = true;
   };
 }
