@@ -18,5 +18,13 @@ in
   config = lib.mkIf enableHyprlandModule {
     programs.hyprland.enable = true;
     programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+
+    environment.systemPackages = with pkgs; [
+      hyprshot
+      jq
+      grim
+      slurp
+      hyprpicker
+    ];
   };
 }

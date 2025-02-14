@@ -10,7 +10,9 @@ let
   enableHyprland = config.my.enableHyprland or false;
 
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
+    sleep 1 &
     ${pkgs.waybar}/bin/waybar &
+    sleep 1 &
     bash $HOME/Imágenes/swww_wallpapers/swww.sh
   '';
 in
@@ -186,13 +188,21 @@ in
 
         bind =
           [
-            "$mod, F, exec, firefox"
             "$mod SHIFT, M, exec, hyprctl dispatch exit"
             "$mod SHIFT, R, exec, hyprctl reload"
+            "$mod SHIFT, f, fullscreen"
 
+            # Apps
+            "$mod, F, exec, firefox"
+            "$mod, V, exec, vscode"
             "$mod, L, exec, hyprlock"
             "Ctrl+Alt,Delete,exec,wlogout"
             "Ctrl+Shift,Escape,exec,kitty -e btop"
+
+            # Capturas
+            ", PRINT, exec, hyprshot --freeze -m output"
+            "$mod, PRINT, exec, hyprshot --freeze -m active"
+            "$mod SHIFT, PRINT, exec, hyprshot --freeze -m region --clipboard-only"
 
             # Ajustar el volumen
             ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"  # Subir volumen 5%
@@ -201,7 +211,6 @@ in
 
             "$mod, minus, resizeactive, -20 -20"
             "$mod, plus, resizeactive, 20 20"
-
 
             "$mod, RETURN, exec, $terminal"
             "$mod, Y, exec, kitty -e yazi"

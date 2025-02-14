@@ -43,18 +43,6 @@
     "flakes"
   ];
 
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "--no-write-lock-file"
-      "-L" # print build logs
-    ];
-    dates = "17:00";
-    randomizedDelaySec = "45min";
-  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -134,6 +122,34 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+
+  system.autoUpgrade = {
+    enable = true;
+    persistent = true;
+    dates = "daily";
+    flake = "/home/nbr/Documentos/NixOs-Conf/";
+    operation = "switch";
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "--update-input"
+      "home-manager"
+      "--update-input"
+      "hyprland"
+      "--update-input"
+      "flale-utils"
+      "--commit-lock-file"
+      "--impure"
+    ];
+  };
+
+  nix.gc = {
+    automatic = true;
+    persistent = false;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nbr = {
     isNormalUser = true;
@@ -149,6 +165,7 @@
       via
       notion-app-enhanced
       transmission_4-gtk
+      qmk
     ];
   };
 
