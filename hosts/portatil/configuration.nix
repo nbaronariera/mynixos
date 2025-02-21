@@ -30,6 +30,7 @@
   my.enablePython = true;
   my.enableKrita = true;
   my.enableVSCode = true;
+  my.enableDocker = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -165,6 +166,7 @@
       via
       notion-app-enhanced
       transmission_4-gtk
+      google-chrome
       qmk
     ];
   };
@@ -240,6 +242,9 @@
     neofetch
     jq
     nh
+    gnum4
+    m4ri
+    gnumake
     blueman
     unrar
     brightnessctl
