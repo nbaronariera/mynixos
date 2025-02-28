@@ -31,6 +31,7 @@
   my.enableKrita = true;
   my.enableVSCode = true;
   my.enableDocker = true;
+  my.enableJS = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -159,15 +160,19 @@
       "networkmanager"
       "wheel"
       "libvirtd"
+      "docker"
     ];
     packages = with pkgs; [
       dolphin
       fira-code
       via
-      notion-app-enhanced
-      transmission_4-gtk
       google-chrome
       qmk
+      maude
+      jetbrains.idea-ultimate
+      siyuan
+      cmatrix
+      lld
     ];
   };
 
@@ -178,6 +183,7 @@
       "networkmanager"
       "wheel"
       "libvirtd"
+      "docker"
     ];
     packages = with pkgs; [
       dolphin
@@ -249,6 +255,7 @@
     unrar
     brightnessctl
     wlsunset
+    openssl
   ];
 
   programs.zsh.enable = true;

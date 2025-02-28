@@ -8,6 +8,7 @@
     ./programacion/nixfmt.nix
     ./programacion/virtualizacion.nix
     ./programacion/python.nix
+    ./programacion/javascript.nix
     ./programacion/rust.nix
     ./programacion/rustrover.nix
     ./programacion/vscode.nix
