@@ -207,11 +207,10 @@ in
 
             "$mod, T, exec, sxiv -g 1000x800 /home/nbr/Imágenes/teclado/*"
 
-
             # Ajustar el volumen
-            ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"  # Subir volumen 5%
-            ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"  # Bajar volumen 5%
-            ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"  # Silenciar/activar sonido
+            ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%" # Subir volumen 5%
+            ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%" # Bajar volumen 5%
+            ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle" # Silenciar/activar sonido
 
             "$mod, minus, resizeactive, -20 -20"
             "$mod, plus, resizeactive, 20 20"

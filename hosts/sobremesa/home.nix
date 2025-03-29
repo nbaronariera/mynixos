@@ -85,7 +85,6 @@
     font="Fira Code,12,-1,5,50,0,0,0,0,0"
   '';
 
-
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
@@ -95,9 +94,9 @@
   };
 
   gtk.cursorTheme = {
-      package = pkgs.bibata-cursors;
-      name = "Bibata-Modern-Classic";
-      size = 24;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 24;
   };
 
   # Let Home Manager install and manage itself.

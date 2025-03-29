@@ -46,7 +46,6 @@
     "flakes"
   ];
 
-
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -125,7 +124,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-
   system.autoUpgrade = {
     enable = true;
     persistent = true;
@@ -196,7 +194,6 @@
     ];
   };
 
-
   fonts.fontDir.enable = true;
 
   fonts.packages = with pkgs; [
@@ -206,9 +203,9 @@
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      sansSerif = ["Fira Code"];
-      serif = ["Fira Code"];
-      monospace = ["Fira Code"];
+      sansSerif = [ "Fira Code" ];
+      serif = [ "Fira Code" ];
+      monospace = [ "Fira Code" ];
     };
   };
 

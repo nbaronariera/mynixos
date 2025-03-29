@@ -30,17 +30,17 @@
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
-      pkgs = import nixpkgs{
+      pkgs = import nixpkgs {
         inherit system;
         overlays = [
-            self.inputs.kickstart-nix-nvim.overlays.default
-          ];
+          self.inputs.kickstart-nix-nvim.overlays.default
+        ];
       };
     in
     {
 
       environment.systemPackages = with pkgs; [
-          nvim-pkg
+        nvim-pkg
       ];
 
       nixosConfigurations.sobremesa = nixpkgs.lib.nixosSystem {
@@ -51,7 +51,7 @@
         ];
 
       };
-      
+
       nixosConfigurations.portatil = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs system; };
@@ -62,25 +62,25 @@
       };
 
       homeConfigurations = {
-      # Configuración para el portatil
-      portatil = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit inputs system; };
-        modules = [
-          ./hosts/portatil/home.nix  # Ruta de configuración para el portatil
-          ./homeManagerModules/default.nix  # Módulos adicionales si los tienes
-        ];
-      };
+        # Configuración para el portatil
+        portatil = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit inputs system; };
+          modules = [
+            ./hosts/portatil/home.nix # Ruta de configuración para el portatil
+            ./homeManagerModules/default.nix # Módulos adicionales si los tienes
+          ];
+        };
 
-      # Configuración para la sobremesa
-      sobremesa = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit inputs system; };
-        modules = [
-          ./hosts/sobremesa/home.nix  # Ruta de configuración para la sobremesa
-          ./homeManagerModules/default.nix  # Módulos adicionales si los tienes
-        ];
+        # Configuración para la sobremesa
+        sobremesa = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit inputs system; };
+          modules = [
+            ./hosts/sobremesa/home.nix # Ruta de configuración para la sobremesa
+            ./homeManagerModules/default.nix # Módulos adicionales si los tienes
+          ];
+        };
       };
     };
-  };
 }

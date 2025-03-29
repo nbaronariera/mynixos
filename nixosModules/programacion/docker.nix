@@ -18,7 +18,6 @@ in
   config = lib.mkIf enableDocker {
     virtualisation.docker.enable = true;
 
-
     environment.systemPackages = with pkgs; [
       lazydocker
     ];
