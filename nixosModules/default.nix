@@ -13,6 +13,7 @@
     ./programacion/rustrover.nix
     ./programacion/vscode.nix
     ./programacion/krita.nix
+    ./programacion/java.nix
     ./programacion/docker.nix
     ./hyprland/cachix.nix
     ./hyprland/hyprlandModule.nix

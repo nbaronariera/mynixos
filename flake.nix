@@ -4,6 +4,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     flake-utils.url = "github:numtide/flake-utils";
+    kickstart-nix-nvim = {
+      url = "github:nix-community/kickstart-nix.nvim/main";
+      flake = true;
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -26,9 +30,19 @@
     let
       lib = nixpkgs.lib;
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs{
+        inherit system;
+        overlays = [
+            self.inputs.kickstart-nix-nvim.overlays.default
+          ];
+      };
     in
     {
+
+      environment.systemPackages = with pkgs; [
+          nvim-pkg
+      ];
+
       nixosConfigurations.sobremesa = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs system; };

@@ -174,6 +174,7 @@ in
         windowrulev2 = [
           "suppressevent maximize, class:.*"
           "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+          "float, class:sxiv"
         ];
 
         monitor = [
@@ -202,7 +203,10 @@ in
             # Capturas
             ", PRINT, exec, hyprshot --freeze -m output"
             "$mod, PRINT, exec, hyprshot --freeze -m active"
-            "$mod SHIFT, PRINT, exec, hyprshot --freeze -m region --clipboard-only"
+            "$mod SHIFT, PRINT, exec, hyprshot --freeze -m region"
+
+            "$mod, T, exec, sxiv -g 1000x800 /home/nbr/Imágenes/teclado/*"
+
 
             # Ajustar el volumen
             ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"  # Subir volumen 5%

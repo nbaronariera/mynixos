@@ -32,6 +32,7 @@
   my.enableVSCode = true;
   my.enableDocker = true;
   my.enableJS = true;
+  my.enableJava = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -173,6 +174,9 @@
       siyuan
       cmatrix
       lld
+      sxiv
+      obsidian
+      ripgrep
     ];
   };
 
@@ -227,8 +231,8 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+
   environment.systemPackages = with pkgs; [
-    neovim
     wget
     pass-wayland
     home-manager
@@ -253,9 +257,11 @@
     gnumake
     blueman
     unrar
+    zip
     brightnessctl
     wlsunset
     openssl
+    haruna
   ];
 
   programs.zsh.enable = true;
