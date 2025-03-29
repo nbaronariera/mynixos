@@ -15,8 +15,7 @@ in
 
   config = lib.mkIf enableWLogout {
     programs.wlogout = {
-        enable = true;
+      enable = true;
     };
   };
 }
-

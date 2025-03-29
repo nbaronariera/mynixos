@@ -28,31 +28,23 @@
   my.enableHeroic = true;
   my.enableRust = true;
   my.enablePython = true;
+  my.enableKrita = true;
+  my.enableVSCode = true;
+  my.enableDocker = true;
+  my.enableJS = true;
+  my.enableJava = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "sobremesa"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
-
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "--no-write-lock-file"
-      "-L" # print build logs
-    ];
-    dates = "17:00";
-    randomizedDelaySec = "45min";
-  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -110,7 +102,10 @@
     rtkit.enable = true;
   };
 
+  hardware.keyboard.qmk.enable = true;
+
   hardware.pulseaudio.enable = false;
+  hardware.bluetooth.enable = true;
   hardware.graphics.enable = true;
   services.pipewire = {
     enable = true;
@@ -129,6 +124,33 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  system.autoUpgrade = {
+    enable = true;
+    persistent = true;
+    dates = "daily";
+    flake = "/home/nbr/Documentos/NixOs-Conf/";
+    operation = "switch";
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "--update-input"
+      "home-manager"
+      "--update-input"
+      "hyprland"
+      "--update-input"
+      "flale-utils"
+      "--commit-lock-file"
+      "--impure"
+    ];
+  };
+
+  nix.gc = {
+    automatic = true;
+    persistent = false;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nbr = {
     isNormalUser = true;
@@ -137,15 +159,38 @@
       "networkmanager"
       "wheel"
       "libvirtd"
+      "docker"
     ];
     packages = with pkgs; [
-      kdePackages.kate
-      kdePackages.qtwayland
-      kdePackages.qtsvg
-      kdePackages.kio-fuse
-      kdePackages.kio-extras
       dolphin
       fira-code
+      via
+      google-chrome
+      qmk
+      maude
+      jetbrains.idea-ultimate
+      siyuan
+      cmatrix
+      lld
+      sxiv
+      obsidian
+      ripgrep
+    ];
+  };
+
+  users.users.luca = {
+    isNormalUser = true;
+    description = "Luca Lucae";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+      "docker"
+    ];
+    packages = with pkgs; [
+      dolphin
+      fira-code
+      notion-app-enhanced
     ];
   };
 
@@ -158,9 +203,9 @@
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      sansSerif = ["Fira Code"];
-      serif = ["Fira Code"];
-      monospace = ["Fira Code Mono", "Fira Code"];
+      sansSerif = [ "Fira Code" ];
+      serif = [ "Fira Code" ];
+      monospace = [ "Fira Code" ];
     };
   };
 
@@ -183,8 +228,8 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+
   environment.systemPackages = with pkgs; [
-    neovim
     wget
     pass-wayland
     home-manager
@@ -201,7 +246,19 @@
     mesa
     vulkan-loader
     vulkan-tools
-    vscode
+    neofetch
+    jq
+    nh
+    gnum4
+    m4ri
+    gnumake
+    blueman
+    unrar
+    zip
+    brightnessctl
+    wlsunset
+    openssl
+    haruna
   ];
 
   programs.zsh.enable = true;

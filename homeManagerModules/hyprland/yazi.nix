@@ -33,8 +33,6 @@ in
       rules = [
         { mime = "text/*", use = "kate" },
       ]
-  '';
+    '';
   };
 }
-
-

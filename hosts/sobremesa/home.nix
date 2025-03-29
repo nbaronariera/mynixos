@@ -28,7 +28,7 @@
     fira-code
     jetbrains-mono
     zsh
-
+    bibata-cursors
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -73,6 +73,31 @@
   # or
   #
   #  /etc/profiles/per-user/nbr/etc/profile.d/hm-session-vars.sh
+
+  gtk = {
+    enable = true;
+    font.name = "Fira Code";
+    font.size = 12; # Ajusta el tamaño según tus preferencias
+  };
+
+  xdg.configFile."Trolltech.conf".text = ''
+    [General]
+    font="Fira Code,12,-1,5,50,0,0,0,0,0"
+  '';
+
+  home.pointerCursor = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 24; # Ajusta el tamaño según tus preferencias
+    x11.enable = true;
+    gtk.enable = true;
+  };
+
+  gtk.cursorTheme = {
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Classic";
+    size = 24;
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
