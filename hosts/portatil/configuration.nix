@@ -262,6 +262,7 @@
     wlsunset
     openssl
     haruna
+    sqlitebrowser
   ];
 
   programs.zsh.enable = true;
