@@ -14,12 +14,17 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       self,
       nixpkgs,
+      nixvim,
       home-manager,
       ...
     }@inputs:
@@ -60,6 +65,7 @@
           inherit pkgs;
           extraSpecialArgs = { inherit inputs system; };
           modules = [
+            nixvim.homeManagerModules.nixvim
             ./hosts/portatil/home.nix # Ruta de configuración para el portatil
             ./homeManagerModules/default.nix # Módulos adicionales si los tienes
           ];
@@ -70,6 +76,7 @@
           inherit pkgs;
           extraSpecialArgs = { inherit inputs system; };
           modules = [
+            nixvim.homeManagerModules.nixvim
             ./hosts/sobremesa/home.nix # Ruta de configuración para la sobremesa
             ./homeManagerModules/default.nix # Módulos adicionales si los tienes
           ];
