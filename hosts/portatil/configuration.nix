@@ -27,7 +27,7 @@
   my.enableHyprlandModule = true;
   my.enableHeroic = true;
   my.enableRust = true;
-  my.enablePython = true;
+  my.enablePython = false;
   my.enableKrita = true;
   my.enableVSCode = true;
   my.enableDocker = true;
@@ -85,10 +85,10 @@
   console.keyMap = "es";
 
   # Enable CUPS to print documents.
-  services.printing = {
-    enable = true;
-    drivers = [ pkgs.hplipWithPlugin ];
-  };
+  #services.printing = {
+  #  enable = true;
+  #  drivers = [ pkgs.hplipWithPlugin ];
+  #};
 
   services.avahi = {
     enable = true;
