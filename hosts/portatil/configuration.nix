@@ -260,7 +260,6 @@
     openssl
     haruna
     sqlitebrowser
-    neovim
   ];
 
   programs.zsh.enable = true;
