@@ -22,7 +22,7 @@
 
     shellAliases = {
       ll = "ls -l";
-      rebuild = "~/rebuild.sh";
+      rebuild = "bash /home/nbr/Documentos/NixOs-Conf/rebuild.sh";
     };
 
     oh-my-zsh = {
