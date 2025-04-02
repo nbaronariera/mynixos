@@ -12,8 +12,7 @@ pass git push
 
 # Actualiza Flak
 echo "Actualizando flake..."
-echo "Desactivado temporalmente"
-# nix flake update
+nix flake update
 
 # Pushea git
 echo "Pusheando a git..."
