@@ -259,6 +259,8 @@
     wlsunset
     openssl
     haruna
+    rust-analyzer
+    jdt-language-server
   ];
 
   programs.zsh.enable = true;

@@ -17,5 +17,6 @@
     ./programacion/docker.nix
     ./hyprland/cachix.nix
     ./hyprland/hyprlandModule.nix
+    ./nvim/nvim.nix
   ];
 }

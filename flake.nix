@@ -45,6 +45,7 @@
         inherit system;
         specialArgs = { inherit inputs system; };
         modules = [
+          nixvim.nixosModules.nixvim
           ./hosts/sobremesa/configuration.nix
         ];
 
@@ -54,6 +55,7 @@
         inherit system;
         specialArgs = { inherit inputs system; };
         modules = [
+          nixvim.nixosModules.nixvim
           ./hosts/portatil/configuration.nix
         ];
 
@@ -65,7 +67,6 @@
           inherit pkgs;
           extraSpecialArgs = { inherit inputs system; };
           modules = [
-            nixvim.homeManagerModules.nixvim
             ./hosts/portatil/home.nix # Ruta de configuración para el portatil
             ./homeManagerModules/default.nix # Módulos adicionales si los tienes
           ];
@@ -76,7 +77,6 @@
           inherit pkgs;
           extraSpecialArgs = { inherit inputs system; };
           modules = [
-            nixvim.homeManagerModules.nixvim
             ./hosts/sobremesa/home.nix # Ruta de configuración para la sobremesa
             ./homeManagerModules/default.nix # Módulos adicionales si los tienes
           ];
