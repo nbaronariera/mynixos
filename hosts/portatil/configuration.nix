@@ -260,6 +260,8 @@
     openssl
     haruna
     sqlitebrowser
+    rust-analyzer
+    jdt-language-server
   ];
 
   programs.zsh.enable = true;

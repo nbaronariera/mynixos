@@ -86,9 +86,10 @@
         enable = true;
       };
 
-      lazy = {
-        enable = true;
-      };
+      ## Configurar
+      #lazy = {
+      #  enable = true;
+      #};
 
       nvim-tree = {
         enable = true;
