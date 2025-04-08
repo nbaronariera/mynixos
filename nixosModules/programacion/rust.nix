@@ -22,6 +22,7 @@ in
       rustup
       gcc
       cargo-generate
+      rust-analyzer
     ];
   };
 }
