@@ -29,6 +29,7 @@
             enable = true;
             installCargo = true;
             installRustc = true;
+            settings.check.allTargets = false;
             cmd = [ "/run/current-system/sw/bin/rust-analyzer" ];
           };
           jdtls = {
