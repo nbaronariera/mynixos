@@ -49,6 +49,8 @@
           ./hosts/sobremesa/configuration.nix
         ];
 
+        RUST_SRC_PATH = "${toolchain}/lib/rustlib/src/rust/library";
+
       };
 
       nixosConfigurations.portatil = nixpkgs.lib.nixosSystem {
@@ -58,6 +60,8 @@
           nixvim.nixosModules.nixvim
           ./hosts/portatil/configuration.nix
         ];
+
+        RUST_SRC_PATH = "${toolchain}/lib/rustlib/src/rust/library";
 
       };
 
