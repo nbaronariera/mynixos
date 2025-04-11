@@ -11,6 +11,7 @@
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
+    clipboard.register = "unnamedplus";
 
     extraPlugins = with pkgs.vimPlugins; [
       cinnamon-nvim
@@ -451,27 +452,19 @@
 
     extraConfigLua = ''
       require('cinnamon').setup {
-            -- Enable all provided keymaps
-            keymaps = {
-                basic = true,
-                extra = true,
-            },
-            -- Only scroll the window
-            options = { mode = 'cursor' },
+        -- Enable all provided keymaps
+        keymaps = {
+          basic = true,
+          extra = true,
+        },
+        -- Only scroll the window
+        options = { mode = 'cursor' },
+      }
 
-            vim.api.nvim_set_hl(0, 'CmpItemAbbr', { fg = '#b0b0b0', bg = 'NONE' })
-            vim.api.nvim_set_hl(0, "CmpSel", { bg = "#5f87af", fg = "#ffffff" })
 
-            --local ls = require("luasnip")
-            --local s = ls.snippet
-            --local t = ls.text_node
+        vim.api.nvim_set_hl(0, 'CmpItemAbbr', { fg = '#b0b0b0', bg = 'NONE' })
+        vim.api.nvim_set_hl(0, "CmpSel", { bg = "#5f87af", fg = "#ffffff" })
+    '';
 
-            -- Snippets personalizados
-            --[[ ls.add_snippets("lua", {
-              s("patata", {
-                t({ 'print("patata")' }),
-              }),
-            }) ]]--
-          }'';
   };
 }
