@@ -261,6 +261,7 @@
     haruna
     sqlitebrowser
     jdt-language-server
+    wl-clipboard
   ];
 
   programs.zsh.enable = true;

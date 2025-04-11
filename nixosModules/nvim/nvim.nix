@@ -459,6 +459,7 @@
             -- Only scroll the window
             options = { mode = 'cursor' },
 
+            vim.api.nvim_set_hl(0, 'CmpItemAbbr', { fg = '#b0b0b0', bg = 'NONE' })
             vim.api.nvim_set_hl(0, "CmpSel", { bg = "#5f87af", fg = "#ffffff" })
 
             --local ls = require("luasnip")
