@@ -167,7 +167,6 @@
       via
       google-chrome
       qmk
-      maude
       jetbrains.idea-ultimate
       siyuan
       cmatrix
@@ -175,6 +174,7 @@
       sxiv
       obsidian
       ripgrep
+      nusmv
     ];
   };
 

@@ -15,7 +15,9 @@
 
     extraPlugins = with pkgs.vimPlugins; [
       cinnamon-nvim
+      vim-be-good
       friendly-snippets
+      whitespace-nvim
     ];
 
     colorschemes.onedark.enable = true;
@@ -460,6 +462,27 @@
         -- Only scroll the window
         options = { mode = 'cursor' },
       }
+
+
+      vim.opt.colorcolumn = "100"
+
+      -- Define el resaltado para ColorColumn
+      vim.cmd([[highlight ColorColumn ctermbg=235 guibg=#262626]])
+
+      -- Crear autocmd para actualizar colorcolumn al cambiar de ventana
+      vim.api.nvim_create_autocmd("WinLeave", {
+        pattern = "*",
+        callback = function()
+          vim.opt.colorcolumn = "0"
+        end,
+      })
+
+      vim.api.nvim_create_autocmd("WinEnter", {
+        pattern = "*",
+        callback = function()
+          vim.opt.colorcolumn = "+0"
+        end,
+      })
 
 
         vim.api.nvim_set_hl(0, 'CmpItemAbbr', { fg = '#b0b0b0', bg = 'NONE' })
