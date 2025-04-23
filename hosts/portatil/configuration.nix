@@ -262,6 +262,7 @@
     sqlitebrowser
     jdt-language-server
     wl-clipboard
+    onlyoffice-desktopeditors
   ];
 
   programs.zsh.enable = true;
