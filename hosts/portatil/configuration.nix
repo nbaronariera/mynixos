@@ -263,6 +263,7 @@
     jdt-language-server
     wl-clipboard
     onlyoffice-desktopeditors
+    onlyoffice-documentserver
   ];
 
   programs.zsh.enable = true;
