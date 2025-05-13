@@ -174,7 +174,7 @@
       sxiv
       obsidian
       ripgrep
-      nusmv
+      spin
     ];
   };
 
