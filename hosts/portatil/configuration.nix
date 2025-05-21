@@ -264,6 +264,7 @@
     wl-clipboard
     onlyoffice-desktopeditors
     onlyoffice-documentserver
+    gnome-calculator
   ];
 
   programs.zsh.enable = true;
