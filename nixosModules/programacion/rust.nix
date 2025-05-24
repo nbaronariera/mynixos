@@ -23,6 +23,7 @@ in
       gcc
       cargo-generate
       rust-analyzer
+      bacon
     ];
   };
 }
