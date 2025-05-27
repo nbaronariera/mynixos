@@ -17,7 +17,7 @@ in
 
   config = lib.mkIf enableJS {
     environment.systemPackages = with pkgs; [
-      nodejs_23
+      nodejs_24
     ];
   };
 }

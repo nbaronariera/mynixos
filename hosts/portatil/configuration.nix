@@ -162,7 +162,7 @@
       "docker"
     ];
     packages = with pkgs; [
-      dolphin
+      kdePackages.dolphin
       fira-code
       via
       google-chrome
@@ -188,7 +188,7 @@
       "docker"
     ];
     packages = with pkgs; [
-      dolphin
+      kdePackages.dolphin
       fira-code
       notion-app-enhanced
     ];
@@ -197,7 +197,7 @@
   fonts.fontDir.enable = true;
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nerd-fonts.fira-code
   ];
 
   fonts.fontconfig = {
@@ -241,7 +241,7 @@
     xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
-    xdg-desktop-portal-kde
+    kdePackages.xdg-desktop-portal-kde
     xdg-desktop-portal-wlr
     mesa
     vulkan-loader
@@ -265,7 +265,7 @@
     onlyoffice-desktopeditors
     onlyoffice-documentserver
     gnome-calculator
-    mvp
+    mpv
     feh
     imv
   ];
