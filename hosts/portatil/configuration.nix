@@ -265,6 +265,9 @@
     onlyoffice-desktopeditors
     onlyoffice-documentserver
     gnome-calculator
+    mvp
+    feh
+    imv
   ];
 
   programs.zsh.enable = true;
