@@ -30,9 +30,8 @@ in
       ]
 
       [open]
-      rules = [
-        { mime = "text/*", use = "kate" },
-      ]
+      [rules]
+      "*" = { run = ["xdg-open", "$1"], block = false }
     '';
   };
 }
