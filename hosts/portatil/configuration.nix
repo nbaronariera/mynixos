@@ -268,6 +268,7 @@
     mpv
     feh
     imv
+    lapce
   ];
 
   programs.zsh.enable = true;
