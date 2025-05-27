@@ -31,12 +31,14 @@ in
 
     services.mako = {
       enable = true;
-      borderRadius = 5;
-      defaultTimeout = 5000;
-      maxVisible = 3;
-      width = 200;
-      height = 200;
-      backgroundColor = "#454545bb";
+      settings = {
+        borderRadius = 5;
+        defaultTimeout = 5000;
+        maxVisible = 3;
+        width = 200;
+        height = 200;
+        backgroundColor = "#454545bb";
+      };
     };
 
     home.file.".config/wal/templates/colors-hyprland.conf" = {

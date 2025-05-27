@@ -24,7 +24,7 @@ in
   };
 
   config = lib.mkIf enableHyprland {
-    xdg.portal.config.default = "*";
+    #xdg.portal.config.default = "*";
 
     home.sessionVariables.NIXOS_OZONE_WL = "1";
     wayland.windowManager.hyprland = {
