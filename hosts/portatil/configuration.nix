@@ -104,7 +104,7 @@
 
   hardware.keyboard.qmk.enable = true;
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
   hardware.graphics.enable = true;
   services.pipewire = {

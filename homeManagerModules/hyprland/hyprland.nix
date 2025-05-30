@@ -10,9 +10,9 @@ let
   enableHyprland = config.my.enableHyprland or false;
 
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-    sleep 1 &
+    sleep 2 &
     ${pkgs.waybar}/bin/waybar &
-    sleep 1 &
+    sleep 2 &
     bash $HOME/Imágenes/swww_wallpapers/swww.sh
   '';
 in
@@ -24,7 +24,12 @@ in
   };
 
   config = lib.mkIf enableHyprland {
-    #xdg.portal.config.default = "*";
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+      configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
+    };
 
     home.sessionVariables.NIXOS_OZONE_WL = "1";
     wayland.windowManager.hyprland = {
@@ -55,14 +60,14 @@ in
           border_size = 2;
 
           # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-          "col.active_border" = "$color1 $color1 $color2  45deg";
+          "col.active_border" = "$color1 $color2 $color3 45deg";
           "col.inactive_border" = "$foreground";
 
           # Set to true enable resizing windows by clicking and dragging on borders and gaps
           resize_on_border = false;
 
           # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
-          allow_tearing = false;
+          allow_tearing = true;
 
           layout = "dwindle";
         };
@@ -76,7 +81,7 @@ in
 
           shadow = {
             enabled = true;
-            range = 6;
+            range = 12;
             render_power = 4;
             color = "rgba(1a1a1aee)";
           };
@@ -88,7 +93,6 @@ in
             enabled = true;
             size = 3;
             passes = 1;
-
             vibrancy = 0.1696;
           };
         };
