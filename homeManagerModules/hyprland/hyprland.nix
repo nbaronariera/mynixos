@@ -10,10 +10,8 @@ let
   enableHyprland = config.my.enableHyprland or false;
 
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-    sleep 2 &
-    ${pkgs.waybar}/bin/waybar &
-    sleep 2 &
-    bash $HOME/Imágenes/swww_wallpapers/swww.sh
+    ${pkgs.waybar}/bin/waybar & sleep 1 &
+    bash /home/nbr/Documentos/NixOs-Conf/swww_wallpapers/swww.sh
   '';
 in
 {
@@ -37,6 +35,11 @@ in
 
       plugins = [ ];
       settings = {
+
+        debug = {
+          disable_logs = false;
+        };
+
         exec-once = [
           ''${startupScript}/bin/start''
           "hyprctl setcursor Bibata-Modern-Classic 24"
@@ -44,7 +47,7 @@ in
         ];
 
         source = [
-          "$HOME/.cache/wal/colors-hyprland.conf"
+          "/home/nbr/.cache/wal/colors-hyprland.conf"
         ];
 
         env = [
