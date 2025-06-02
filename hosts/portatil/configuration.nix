@@ -223,6 +223,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowInsecure = true;
 
   # Fixes ld problems
   programs.nix-ld.enable = true;
