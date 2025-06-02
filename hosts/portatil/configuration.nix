@@ -268,6 +268,8 @@
     mpv
     feh
     imv
+    tldr
+    syncthing
   ];
 
   programs.zsh.enable = true;
