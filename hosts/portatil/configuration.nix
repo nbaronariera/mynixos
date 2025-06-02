@@ -175,6 +175,7 @@
       obsidian
       ripgrep
       spin
+      ventoy
     ];
   };
 
