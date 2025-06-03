@@ -267,8 +267,6 @@
     imv
     tldr
     syncthing
-    powertop
-    tlp
   ];
 
   programs.zsh.enable = true;
