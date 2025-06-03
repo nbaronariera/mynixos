@@ -174,9 +174,6 @@
       sxiv
       obsidian
       ripgrep
-      powertop
-      tlp # Opción más agresiva de ahorro de energía
-      powertop2tuned
     ];
   };
 
@@ -270,6 +267,9 @@
     imv
     tldr
     syncthing
+    powertop
+    tlp # Opción más agresiva de ahorro de energía
+    powertop2tuned
   ];
 
   programs.zsh.enable = true;
