@@ -10,7 +10,7 @@ let
   enableHyprland = config.my.enableHyprland or false;
 
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
-    ${pkgs.waybar}/bin/waybar & sleep 1 &
+    ${pkgs.waybar}/bin/waybar &
     bash /home/nbr/Documentos/NixOs-Conf/swww_wallpapers/swww.sh
   '';
 in

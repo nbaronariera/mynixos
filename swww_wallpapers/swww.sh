@@ -10,7 +10,7 @@ DURATION=5  # en segundos
 
 # Verificar si swww está corriendo
 if ! pgrep -x "swww-daemon" > /dev/null; then
-    swww-daemon
+    swww-daemon &
 fi
 
 #while true; do

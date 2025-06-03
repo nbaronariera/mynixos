@@ -174,8 +174,9 @@
       sxiv
       obsidian
       ripgrep
-      spin
-      ventoy
+      powertop
+      tlp # Opción más agresiva de ahorro de energía
+      powertop2tuned
     ];
   };
 
@@ -191,7 +192,6 @@
     packages = with pkgs; [
       kdePackages.dolphin
       fira-code
-      notion-app-enhanced
     ];
   };
 
@@ -223,11 +223,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "ventoy-1.1.05"
-    "ventoy-full-gtk"
-  ];
 
   # Fixes ld problems
   programs.nix-ld.enable = true;
@@ -265,7 +260,6 @@
     wlsunset
     openssl
     haruna
-    sqlitebrowser
     jdt-language-server
     wl-clipboard
     onlyoffice-desktopeditors
