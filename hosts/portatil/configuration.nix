@@ -268,8 +268,7 @@
     tldr
     syncthing
     powertop
-    tlp # Opción más agresiva de ahorro de energía
-    powertop2tuned
+    tlp
   ];
 
   programs.zsh.enable = true;
