@@ -174,6 +174,7 @@
       sxiv
       obsidian
       ripgrep
+      tui-journal
     ];
   };
 
