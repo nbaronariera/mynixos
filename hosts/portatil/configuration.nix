@@ -281,6 +281,9 @@
     enableSSHSupport = true;
   };
 
+  fonts.fontconfig.dpi = 144;
+  services.xserver.dpi = 144;
+
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
