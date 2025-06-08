@@ -74,16 +74,16 @@
   #
   #  /etc/profiles/per-user/nbr/etc/profile.d/hm-session-vars.sh
 
-  #  gtk = {
-  #    enable = true;
-  #    font.name = "Fira Code";
-  #    font.size = 12; # Ajusta el tamaño según tus preferencias
-  #  };
-  #
-  #  xdg.configFile."Trolltech.conf".text = ''
-  #    [General]
-  #    font="Fira Code,12,-1,5,50,0,0,0,0,0"
-  #  '';
+  gtk = {
+    enable = true;
+    font.name = "Fira Code";
+    font.size = 12; # Ajusta el tamaño según tus preferencias
+  };
+
+  xdg.configFile."Trolltech.conf".text = ''
+    [General]
+    font="Fira Code,12,-1,5,50,0,0,0,0,0"
+  '';
 
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
