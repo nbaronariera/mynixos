@@ -11,7 +11,7 @@ let
 
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar & sleep 1 &
-    bash /home/nbr/Documentos/NixOs-Conf/swww_wallpapers/swww.sh
+    bash /home/nbr/Documentos/NixOs-Conf/swww_wallpapers/swww.sh &
   '';
 in
 {

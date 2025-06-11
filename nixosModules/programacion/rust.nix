@@ -19,7 +19,6 @@ in
     environment.systemPackages = with pkgs; [
       cargo
       rustc
-      rustup
       gcc
       cargo-generate
       rust-analyzer

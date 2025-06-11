@@ -282,8 +282,6 @@
     enableSSHSupport = true;
   };
 
-  services.xserver.dpi = 150;
-
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
