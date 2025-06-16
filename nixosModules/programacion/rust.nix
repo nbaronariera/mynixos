@@ -24,6 +24,7 @@ in
       rust-analyzer
       rustfmt
       bacon
+      rust-src
     ];
   };
 }
