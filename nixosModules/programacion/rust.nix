@@ -25,6 +25,7 @@ in
       cargo-generate
       cargo-llvm-cov
       llvm-tools-preview
+      rustup
       rust-analyzer
       rustfmt
       bacon
