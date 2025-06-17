@@ -16,6 +16,7 @@ in
   };
 
   config = lib.mkIf enableRust {
+    RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
     environment.systemPackages = with pkgs; [
       cargo
       rustc
