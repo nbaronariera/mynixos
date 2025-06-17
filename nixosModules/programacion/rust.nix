@@ -21,6 +21,7 @@ in
       rustc
       gcc
       cargo-generate
+      cargo-llvm-cov
       rust-analyzer
       rustfmt
       bacon
