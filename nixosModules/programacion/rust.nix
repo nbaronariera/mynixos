@@ -24,6 +24,7 @@ in
       gcc
       cargo-generate
       cargo-llvm-cov
+      llvm-tools-preview
       rust-analyzer
       rustfmt
       bacon
