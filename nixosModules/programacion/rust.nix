@@ -26,6 +26,7 @@ in
       cargo-llvm-cov
       rustup
       rust-analyzer
+      gnuplot
       rustfmt
       bacon
     ];
