@@ -38,7 +38,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "sobremesa"; # Define your hostname.
+  networking.hostName = "portatil"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   nix.settings.experimental-features = [
@@ -104,7 +104,7 @@
 
   hardware.keyboard.qmk.enable = true;
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
   hardware.graphics.enable = true;
   services.pipewire = {
@@ -162,12 +162,11 @@
       "docker"
     ];
     packages = with pkgs; [
-      dolphin
+      kdePackages.dolphin
       fira-code
       via
       google-chrome
       qmk
-      maude
       jetbrains.idea-ultimate
       siyuan
       cmatrix
@@ -175,6 +174,7 @@
       sxiv
       obsidian
       ripgrep
+      tui-journal
     ];
   };
 
@@ -188,16 +188,15 @@
       "docker"
     ];
     packages = with pkgs; [
-      dolphin
+      kdePackages.dolphin
       fira-code
-      notion-app-enhanced
     ];
   };
 
   fonts.fontDir.enable = true;
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nerd-fonts.fira-code
   ];
 
   fonts.fontconfig = {
@@ -246,7 +245,7 @@
     xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
-    xdg-desktop-portal-kde
+    kdePackages.xdg-desktop-portal-kde
     xdg-desktop-portal-wlr
     mesa
     vulkan-loader
@@ -264,8 +263,17 @@
     wlsunset
     openssl
     haruna
-    rust-analyzer
     jdt-language-server
+    wl-clipboard
+    onlyoffice-desktopeditors
+    onlyoffice-documentserver
+    gnome-calculator
+    mpv
+    feh
+    imv
+    tldr
+    syncthing
+    protontricks
   ];
 
   programs.zsh.enable = true;
