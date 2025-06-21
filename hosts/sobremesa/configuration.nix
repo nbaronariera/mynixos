@@ -211,7 +211,7 @@
   fileSystems."/mnt/hdd1" = {
     device = "/dev/disk/by-uuid/5EAEA1E8AEA1B943";
     fsType = "ntfs";
-  }
+  };
 
   programs.dconf.enable = true;
 
