@@ -214,7 +214,8 @@
     fsType = "ext4";
     options = [
       "nofail" # No detiene el arranque si no está
-      "x-systemd.device-timeout=1s" # Espera poco
+      "x-systemd.automount"
+      "x-systemd.device-timeout=10s" # Espera poco
     ];
   };
 
