@@ -175,7 +175,6 @@
       obsidian
       ripgrep
       tui-journal
-      maptool
     ];
   };
 
@@ -210,7 +209,7 @@
   };
 
   fileSystems."/mnt/hdd1" = {
-    device = "/dev/disk/by-uuid/896ddb6a-2a71-4ad7-99ea-ff7c29677c1e";
+    device = "/dev/disk/by-uuid/857dc58c-8def-44b7-b381-17369d7213e5";
     fsType = "ext4";
     options = [
       "nofail" # No detiene el arranque si no está
