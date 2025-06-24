@@ -25,10 +25,10 @@
   my.enableKVM = true;
   my.enableCachix = true;
   my.enableHyprlandModule = true;
-  my.enableHeroic = true;
+  my.enableHeroic = false;
   my.enableRust = true;
   my.enablePython = true;
-  my.enableKrita = true;
+  my.enableKrita = false;
   my.enableVSCode = true;
   my.enableDocker = true;
   my.enableJS = true;
@@ -208,15 +208,17 @@
     };
   };
 
-  fileSystems."/mnt/hdd1" = {
-    device = "/dev/disk/by-uuid/857dc58c-8def-44b7-b381-17369d7213e5";
-    fsType = "ext4";
-    options = [
-      "nofail" # No detiene el arranque si no está
-      "x-systemd.automount"
-      "x-systemd.device-timeout=10s" # Espera poco
-    ];
-  };
+  boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
+
+  #fileSystems."/mnt/hdd1" = {
+  #  device = "/dev/disk/by-uuid/857dc58c-8def-44b7-b381-17369d7213e5";
+  #  fsType = "ext4";
+  #  options = [
+  #    "nofail" # No detiene el arranque si no está
+  #    "x-systemd.automount"
+  #    "x-systemd.device-timeout=10s" # Espera poco
+  #  ];
+  #};
 
   programs.dconf.enable = true;
 
