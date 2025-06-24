@@ -208,17 +208,20 @@
     };
   };
 
-  boot.extraModulePackages = [ config.boot.kernelPackages.exfat-nofuse ];
+  boot.kernelModules = [
+    "k10temp"
+    "amdgpu"
+  ];
 
-  #fileSystems."/mnt/hdd1" = {
-  #  device = "/dev/disk/by-uuid/857dc58c-8def-44b7-b381-17369d7213e5";
-  #  fsType = "ext4";
-  #  options = [
-  #    "nofail" # No detiene el arranque si no está
-  #    "x-systemd.automount"
-  #    "x-systemd.device-timeout=10s" # Espera poco
-  #  ];
-  #};
+  fileSystems."/mnt/hdd1" = {
+    device = "/dev/disk/by-uuid/857dc58c-8def-44b7-b381-17369d7213e5";
+    fsType = "ext4";
+    options = [
+      "nofail" # No detiene el arranque si no está
+      "x-systemd.automount"
+      "x-systemd.device-timeout=10s" # Espera poco
+    ];
+  };
 
   programs.dconf.enable = true;
 
