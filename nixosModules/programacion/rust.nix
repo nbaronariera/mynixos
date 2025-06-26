@@ -17,7 +17,6 @@ in
 
   config = lib.mkIf enableRust {
     environment.variables.RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
-    environment.variables.LIBCLANG_PATH = "${pkgs.llvmPackages.libclang}/lib";
 
     environment.systemPackages = with pkgs; [
       cargo
@@ -30,8 +29,6 @@ in
       gnuplot
       rustfmt
       bacon
-      llvmPackages.libclang
-      llvmPackages.clang
     ];
   };
 }
