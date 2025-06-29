@@ -22,7 +22,7 @@
   my.enableDiscord = true;
   my.enableGit = true;
   my.enableNixfmt = true;
-  my.enableKVM = true;
+  my.enableKVM = false;
   my.enableCachix = true;
   my.enableHyprlandModule = true;
   my.enableHeroic = false;
@@ -85,10 +85,10 @@
   console.keyMap = "es";
 
   # Enable CUPS to print documents.
-  #services.printing = {
-  #  enable = true;
-  #  drivers = [ pkgs.hplipWithPlugin ];
-  #};
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.hplipWithPlugin ];
+  };
 
   services.avahi = {
     enable = true;
@@ -212,16 +212,6 @@
     "k10temp"
     "amdgpu"
   ];
-
-  # fileSystems."/mnt/hdd1" = {
-  #   device = "/dev/disk/by-uuid/857dc58c-8def-44b7-b381-17369d7213e5";
-  #   fsType = "ext4";
-  #   options = [
-  #     "nofail" # No detiene el arranque si no está
-  #     "x-systemd.automount"
-  #     "x-systemd.device-timeout=10s" # Espera poco
-  #   ];
-  # };
 
   programs.dconf.enable = true;
 

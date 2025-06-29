@@ -38,6 +38,17 @@
     ];
   };
 
+  fileSystems."/mnt/hdd1" = {
+    device = "/dev/disk/by-uuid/857dc58c-8def-44b7-b381-17369d7213e5";
+    fsType = "ext4";
+  };
+
+  fileSystems."/var/lib/docker/overlay2/c8957b99896ffb60916ac04203f32c3857b738166816a401498a1f81de56a49d/merged" =
+    {
+      device = "overlay";
+      fsType = "overlay";
+    };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -45,6 +56,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp5s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

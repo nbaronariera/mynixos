@@ -44,6 +44,7 @@ in
           ''${startupScript}/bin/start''
           "hyprctl setcursor Bibata-Modern-Classic 24"
           "wlsunset -l 39.49 -L -0.38"
+          "docker start sync"
         ];
 
         source = [
