@@ -168,7 +168,6 @@
       google-chrome
       qmk
       jetbrains.idea-ultimate
-      siyuan
       cmatrix
       lld
       sxiv

@@ -85,10 +85,10 @@
   console.keyMap = "es";
 
   # Enable CUPS to print documents.
-  #services.printing = {
-  #  enable = true;
-  #  drivers = [ pkgs.hplipWithPlugin ];
-  #};
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.hplipWithPlugin ];
+  };
 
   services.avahi = {
     enable = true;
@@ -168,7 +168,6 @@
       google-chrome
       qmk
       jetbrains.idea-ultimate
-      siyuan
       cmatrix
       lld
       sxiv
