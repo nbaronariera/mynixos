@@ -23,6 +23,7 @@ in
       rustc
       gcc
       cargo-generate
+      cargo-flamegraph
       cargo-llvm-cov
       rustup
       rust-analyzer

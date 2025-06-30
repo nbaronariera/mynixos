@@ -13,6 +13,3 @@ IMAGE=$(find "$IMAGE_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname 
 echo "$IMAGE"
 
 wal -e --cols16  -q -i "$IMAGE"
-
-bash "$IMAGE_DIR/vscode.sh"
-
