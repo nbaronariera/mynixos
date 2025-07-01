@@ -18,6 +18,7 @@ in
   config = lib.mkIf enableGit {
     environment.systemPackages = with pkgs; [
       git
+      gh
     ];
   };
 }
