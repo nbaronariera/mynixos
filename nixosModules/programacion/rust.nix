@@ -30,6 +30,7 @@ in
       rust-analyzer
       gnuplot
       rustfmt
+      cargo-llvm-lines
       bacon
     ];
   };
