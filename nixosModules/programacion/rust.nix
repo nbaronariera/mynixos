@@ -33,6 +33,7 @@ in
       cargo-llvm-lines
       cargo-profiler
       valgrind
+      hotspot
       bacon
     ];
   };
