@@ -30,7 +30,7 @@ in
 
         background = [
           {
-            path = "/home/nbr/Imágenes/lockimage.png"; # Se usa la variable de home para el fondo
+            path = "${config.home.homeDirectory}/Imágenes/lockimage.png"; # Se usa la variable de home para el fondo
             blur_passes = 1; # Según la configuración original, no había blur
             blur_size = 3; # Sin ajustes adicionales
           }
@@ -99,7 +99,7 @@ in
         image = [
           {
             monitor = "";
-            path = "/home/nbr/Imágenes/icon.png"; # Imagen adicional
+            path = "${config.home.homeDirectory}/Imágenes/icon.png"; # Imagen adicional
             size = 200;
             rounding = -1;
             border_size = 4;

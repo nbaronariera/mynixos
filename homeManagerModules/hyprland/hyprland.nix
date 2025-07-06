@@ -11,7 +11,7 @@ let
 
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar & sleep 1 &
-    bash /home/nbr/Documentos/NixOs-Conf/swww_wallpapers/swww.sh &
+    bash ${config.home.homeDirectory}/Documentos/NixOs-Conf/swww_wallpapers/swww.sh &
   '';
 in
 {
@@ -48,7 +48,7 @@ in
         ];
 
         source = [
-          "/home/nbr/.cache/wal/colors-hyprland.conf"
+          "${config.home.homeDirectory}/.cache/wal/colors-hyprland.conf"
         ];
 
         env = [
@@ -213,7 +213,7 @@ in
             "$mod, PRINT, exec, hyprshot --freeze -m active"
             "$mod SHIFT, PRINT, exec, hyprshot --freeze -m region"
 
-            "$mod, T, exec, sxiv -g 1000x800 /home/nbr/Imágenes/teclado/*"
+            "$mod, T, exec, sxiv -g 1000x800 ${config.home.homeDirectory}/Imágenes/teclado/*"
 
             # Ajustar el volumen
             ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%" # Subir volumen 5%
@@ -242,7 +242,7 @@ in
             "$mod, LEFT, workspace, e-1"
 
             # Example special workspace (scratchpad)
-            "$mod, S, exec, /home/nbr/Documentos/NixOs-Conf/homeManagerModules/hyprland/hyprscratch.sh kitty kitty terminal"
+            "$mod, S, exec, ${config.home.homeDirectory}/Documentos/NixOs-Conf/homeManagerModules/hyprland/hyprscratch.sh kitty kitty terminal"
           ]
           ++ (
             # workspaces

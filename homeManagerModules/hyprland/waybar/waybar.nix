@@ -17,7 +17,7 @@ in
   config = lib.mkIf enableWaybar {
     programs.waybar = {
       enable = true;
-      style = builtins.readFile "/home/nbr/Documentos/NixOs-Conf/homeManagerModules/hyprland/waybar/style.css";
+      style = builtins.readFile "${config.home.homeDirectory}/Documentos/NixOs-Conf/homeManagerModules/hyprland/waybar/style.css";
 
       settings = [
         {
@@ -32,7 +32,7 @@ in
 
           # Load Modules
           include = [
-            "/home/nbr/Documentos/NixOs-Conf/homeManagerModules/hyprland/waybar/modules.json"
+            "${config.home.homeDirectory}/Documentos/NixOs-Conf/homeManagerModules/hyprland/waybar/modules.json"
           ];
 
           # Modules Left
