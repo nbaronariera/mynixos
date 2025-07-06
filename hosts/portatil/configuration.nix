@@ -268,6 +268,7 @@
     tldr
     syncthing
     protontricks
+    thunderbird
   ];
 
   programs.zsh.enable = true;

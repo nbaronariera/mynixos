@@ -32,6 +32,7 @@ in
       rustfmt
       cargo-llvm-lines
       cargo-profiler
+      valgrind
       bacon
     ];
   };
