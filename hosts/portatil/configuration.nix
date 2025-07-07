@@ -269,7 +269,6 @@
     syncthing
     protontricks
     thunderbird
-    deltachat-desktop
   ];
 
   programs.zsh.enable = true;
