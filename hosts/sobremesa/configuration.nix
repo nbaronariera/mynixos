@@ -19,7 +19,7 @@
   # ACTIVACIÓN DE MÓDULOS PERSONALIZADOS #
   ########################################
   my.enableSteam = true;
-  my.enableDiscord = true;
+  my.enableDiscord = false;
   my.enableGit = true;
   my.enableNixfmt = true;
   my.enableKVM = false;
@@ -27,12 +27,12 @@
   my.enableHyprlandModule = true;
   my.enableHeroic = false;
   my.enableRust = true;
-  my.enablePython = true;
+  my.enablePython = false;
   my.enableKrita = false;
   my.enableVSCode = true;
   my.enableDocker = true;
-  my.enableJS = true;
-  my.enableJava = true;
+  my.enableJS = false;
+  my.enableJava = false;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -164,31 +164,11 @@
     packages = with pkgs; [
       kdePackages.dolphin
       fira-code
-      via
       google-chrome
       qmk
-      jetbrains.idea-ultimate
-      cmatrix
       lld
       sxiv
       obsidian
-      ripgrep
-      tui-journal
-    ];
-  };
-
-  users.users.luca = {
-    isNormalUser = true;
-    description = "Luca Lucae";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "libvirtd"
-      "docker"
-    ];
-    packages = with pkgs; [
-      kdePackages.dolphin
-      fira-code
     ];
   };
 
@@ -239,7 +219,7 @@
   services.displayManager.sddm.enable = true;
 
   # Configuraciones de Plasma
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enable = false;
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -270,19 +250,16 @@
     mesa
     vulkan-loader
     vulkan-tools
-    neofetch
     jq
     nh
     gnum4
     m4ri
     gnumake
-    blueman
     unrar
     zip
     brightnessctl
     wlsunset
     openssl
-    haruna
     jdt-language-server
     wl-clipboard
     onlyoffice-desktopeditors
@@ -294,6 +271,7 @@
     tldr
     syncthing
     protontricks
+    neofetch
   ];
 
   programs.zsh.enable = true;

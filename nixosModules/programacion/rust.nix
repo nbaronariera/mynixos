@@ -34,7 +34,9 @@ in
       cargo-profiler
       valgrind
       hotspot
+      hyperfine
       bacon
+      trunk
     ];
   };
 }
