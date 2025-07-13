@@ -181,7 +181,7 @@ in
         # Ignore maximize requests from apps. You'll probably like this.
         windowrulev2 = [
           "suppressevent maximize, class:.*"
-          "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"
+          "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0$"
           "float, class:sxiv"
         ];
 
@@ -203,7 +203,7 @@ in
 
             # Apps
             "$mod, F, exec, firefox"
-            "$mod, V, exec, vscode"
+            "$mod, C, exec, code"
             "$mod, L, exec, hyprlock"
             "Ctrl+Alt,Delete,exec,wlogout"
             "Ctrl+Shift,Escape,exec,kitty -e btop"
@@ -213,7 +213,7 @@ in
             "$mod, PRINT, exec, hyprshot --freeze -m active"
             "$mod SHIFT, PRINT, exec, hyprshot --freeze -m region"
 
-            "$mod, T, exec, sxiv -g 1000x800 ${config.home.homeDirectory}/Imágenes/teclado/*"
+            "$mod, T, exec, sxiv -b -g 600x200 ${config.home.homeDirectory}/Imágenes/teclado/*"
 
             # Ajustar el volumen
             ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%" # Subir volumen 5%

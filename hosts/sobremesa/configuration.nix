@@ -27,7 +27,7 @@
   my.enableHyprlandModule = true;
   my.enableHeroic = false;
   my.enableRust = true;
-  my.enablePython = false;
+  my.enablePython = true;
   my.enableKrita = false;
   my.enableVSCode = true;
   my.enableDocker = true;
@@ -150,7 +150,12 @@
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
-
+  services.udev.extraRules = ''
+      # Corne keyboard
+      SUBSYSTEM=="hidraw", ATTRS{idVendor}=="4653", ATTRS{idProduct}=="0001", MODE="0666"
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="4653", ATTRS{idProduct}=="0001", MODE="0666"
+    '';
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nbr = {
     isNormalUser = true;
@@ -160,6 +165,7 @@
       "wheel"
       "libvirtd"
       "docker"
+      "input"
     ];
     packages = with pkgs; [
       kdePackages.dolphin
@@ -272,6 +278,8 @@
     syncthing
     protontricks
     neofetch
+    usbutils
+    via
   ];
 
   programs.zsh.enable = true;
@@ -284,6 +292,7 @@
     enable = true;
     enableSSHSupport = true;
   };
+  
 
   # List services that you want to enable:
 
