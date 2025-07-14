@@ -266,10 +266,10 @@
     brightnessctl
     wlsunset
     openssl
-    jdt-language-server
+    #jdt-language-server
     wl-clipboard
-    onlyoffice-desktopeditors
-    onlyoffice-documentserver
+    #onlyoffice-desktopeditors
+    #onlyoffice-documentserver
     gnome-calculator
     mpv
     feh
