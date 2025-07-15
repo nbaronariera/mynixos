@@ -1,5 +1,5 @@
 # Carpeta donde están las imágenes
-IMAGE_DIR="$HOME/Documentos/NixOs-Conf/swww_wallpapers/"
+IMAGE_DIR="$HOME/NixOs-Conf/swww_wallpapers/"
 
 # Tipo de transición y duración
 TRANSITION="fade"

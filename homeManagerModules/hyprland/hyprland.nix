@@ -11,7 +11,7 @@ let
 
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     ${pkgs.waybar}/bin/waybar & sleep 1 &
-    bash ${config.home.homeDirectory}/Documentos/NixOs-Conf/swww_wallpapers/swww.sh &
+    bash ${config.home.homeDirectory}/NixOs-Conf/swww_wallpapers/swww.sh &
   '';
 in
 {
@@ -193,7 +193,7 @@ in
         "$mod" = "SUPER";
         "$terminal" = "kitty";
         "$fileManager" = "dolphin";
-        "$menu" = "~/Documentos/NixOs-Conf/homeManagerModules/hyprland/rofi/launcher.sh";
+        "$menu" = "~/NixOs-Conf/homeManagerModules/hyprland/rofi/launcher.sh";
 
         bind =
           [
@@ -242,7 +242,7 @@ in
             "$mod, LEFT, workspace, e-1"
 
             # Example special workspace (scratchpad)
-            "$mod, S, exec, ${config.home.homeDirectory}/Documentos/NixOs-Conf/homeManagerModules/hyprland/hyprscratch.sh kitty kitty terminal"
+            "$mod, S, exec, ${config.home.homeDirectory}/NixOs-Conf/homeManagerModules/hyprland/hyprscratch.sh kitty kitty terminal"
           ]
           ++ (
             # workspaces

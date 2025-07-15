@@ -17,7 +17,7 @@ in
   config = lib.mkIf enableWaybar {
     programs.waybar = {
       enable = true;
-      style = builtins.readFile "${config.home.homeDirectory}/Documentos/NixOs-Conf/homeManagerModules/hyprland/waybar/style.css";
+      style = builtins.readFile "${config.home.homeDirectory}/NixOs-Conf/homeManagerModules/hyprland/waybar/style.css";
 
       settings = [
         {
@@ -32,12 +32,12 @@ in
 
           # Load Modules
           include = [
-            "${config.home.homeDirectory}/Documentos/NixOs-Conf/homeManagerModules/hyprland/waybar/modules.json"
+            "${config.home.homeDirectory}/NixOs-Conf/homeManagerModules/hyprland/waybar/modules.json"
           ];
 
           # Modules Left
           modules-left = [
-            "custom/appmenu"
+            #"custom/appmenu"
             "group/links"
             #"group/settings"
             "wlr/taskbar"
@@ -63,7 +63,7 @@ in
             #"group/tools"
             "tray"
             #"custom/hypridle"
-            "custom/windowsvm"
+            #"custom/windowsvm"
             "custom/exit"
             #"custom/ml4w-welcome"
             "clock"
