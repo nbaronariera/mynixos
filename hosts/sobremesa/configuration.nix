@@ -28,7 +28,7 @@
   my.enableHeroic = false;
   my.enableRust = true;
   my.enablePython = true;
-  my.enableKrita = false;
+  my.enableKrita = true;
   my.enableVSCode = true;
   my.enableDocker = true;
   my.enableJS = false;
@@ -38,7 +38,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "portatil"; # Define your hostname.
+  networking.hostName = "sobremesa"; # Define your hostname.
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   nix.settings.experimental-features = [
@@ -225,7 +225,7 @@
   services.displayManager.sddm.enable = true;
 
   # Configuraciones de Plasma
-  services.desktopManager.plasma6.enable = false;
+  services.desktopManager.plasma6.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -266,10 +266,10 @@
     brightnessctl
     wlsunset
     openssl
-    #jdt-language-server
+    jdt-language-server
     wl-clipboard
-    #onlyoffice-desktopeditors
-    #onlyoffice-documentserver
+    onlyoffice-desktopeditors
+    onlyoffice-documentserver
     gnome-calculator
     mpv
     feh

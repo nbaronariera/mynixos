@@ -8,4 +8,4 @@ rofi \
 	-no-drun-show-actions \
 	-terminal kitty \
 	-kb-cancel Escape \
-	-theme ~/Documentos/NixOs-Conf/homeManagerModules/hyprland/rofi/launcher.rasi
+	-theme ~/NixOs-Conf/homeManagerModules/hyprland/rofi/launcher.rasi

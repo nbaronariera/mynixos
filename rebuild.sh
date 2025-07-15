@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd /home/nbr/Documentos/NixOs-Conf
+cd ~/NixOs-Conf
 
 # Formatea
 echo "Corrigiendo formato..."
