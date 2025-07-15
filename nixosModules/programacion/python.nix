@@ -18,8 +18,16 @@ in
   config = lib.mkIf enablePython {
     environment.systemPackages = with pkgs; [
       python3
-      (python3.withPackages (ps: with ps; [ pip ]))
-      thefuck
+      sqlite
+      (python3.withPackages (ps: with ps; [
+      pip
+      pandas
+      jupyterlab
+      ipykernel
+      matplotlib
+      seaborn
+      plotly
+      ]))
       pywalfox-native
     ];
   };

@@ -269,6 +269,8 @@
     syncthing
     protontricks
     thunderbird
+    fusee-nano
+    gparted
   ];
 
   programs.zsh.enable = true;
