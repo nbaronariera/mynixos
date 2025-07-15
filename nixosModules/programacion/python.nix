@@ -21,13 +21,8 @@ in
       sqlite
       (python3.withPackages (ps: with ps; [
       pip
-      pandas
-      jupyterlab
-      ipykernel
-      matplotlib
-      seaborn
-      plotly
       ]))
+      thefuck
       pywalfox-native
     ];
   };

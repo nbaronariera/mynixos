@@ -23,18 +23,8 @@ in
       rustc
       gcc
       cargo-generate
-      cargo-flamegraph
-      linuxPackages_latest.perf
-      cargo-llvm-cov
       rustup
       rust-analyzer
-      gnuplot
-      rustfmt
-      cargo-llvm-lines
-      cargo-profiler
-      valgrind
-      hotspot
-      bacon
     ];
   };
 }

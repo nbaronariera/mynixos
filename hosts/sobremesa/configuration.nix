@@ -19,7 +19,7 @@
   # ACTIVACIÓN DE MÓDULOS PERSONALIZADOS #
   ########################################
   my.enableSteam = true;
-  my.enableDiscord = true;
+  my.enableDiscord = false;
   my.enableGit = true;
   my.enableNixfmt = true;
   my.enableKVM = false;
@@ -31,8 +31,8 @@
   my.enableKrita = false;
   my.enableVSCode = true;
   my.enableDocker = true;
-  my.enableJS = true;
-  my.enableJava = true;
+  my.enableJS = false;
+  my.enableJava = false;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -150,7 +150,12 @@
     dates = "weekly";
     options = "--delete-older-than 30d";
   };
-
+  services.udev.extraRules = ''
+      # Corne keyboard
+      SUBSYSTEM=="hidraw", ATTRS{idVendor}=="4653", ATTRS{idProduct}=="0001", MODE="0666"
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="4653", ATTRS{idProduct}=="0001", MODE="0666"
+    '';
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nbr = {
     isNormalUser = true;
@@ -160,35 +165,16 @@
       "wheel"
       "libvirtd"
       "docker"
+      "input"
     ];
     packages = with pkgs; [
       kdePackages.dolphin
       fira-code
-      via
       google-chrome
       qmk
-      jetbrains.idea-ultimate
-      cmatrix
       lld
       sxiv
       obsidian
-      ripgrep
-      tui-journal
-    ];
-  };
-
-  users.users.luca = {
-    isNormalUser = true;
-    description = "Luca Lucae";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "libvirtd"
-      "docker"
-    ];
-    packages = with pkgs; [
-      kdePackages.dolphin
-      fira-code
     ];
   };
 
@@ -239,7 +225,7 @@
   services.displayManager.sddm.enable = true;
 
   # Configuraciones de Plasma
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6.enable = false;
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -270,23 +256,20 @@
     mesa
     vulkan-loader
     vulkan-tools
-    neofetch
     jq
     nh
     gnum4
     m4ri
     gnumake
-    blueman
     unrar
     zip
     brightnessctl
     wlsunset
     openssl
-    haruna
-    jdt-language-server
+    #jdt-language-server
     wl-clipboard
-    onlyoffice-desktopeditors
-    onlyoffice-documentserver
+    #onlyoffice-desktopeditors
+    #onlyoffice-documentserver
     gnome-calculator
     mpv
     feh
@@ -294,6 +277,9 @@
     tldr
     syncthing
     protontricks
+    neofetch
+    usbutils
+    via
   ];
 
   programs.zsh.enable = true;
@@ -306,6 +292,7 @@
     enable = true;
     enableSSHSupport = true;
   };
+  
 
   # List services that you want to enable:
 
