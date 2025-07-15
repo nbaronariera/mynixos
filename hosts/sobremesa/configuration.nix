@@ -200,18 +200,12 @@
 
   systemd.services.syncthing-docker = {
     description = "Syncthing in Docker";
-    after = [
-      "network.target"
-      "mnt-hdd1.mount"
-    ];
-    requires = [ "mnt-hdd1.mount" ];
     serviceConfig = {
       ExecStart = ''
         /run/current-system/sw/bin/docker run --rm \
           --name='sync' \
           --network=host \
           -v /wherever/st-sync:/var/syncthing \
-          -v /mnt/hdd1/sync:/mnt/hdd1/sync \
           syncthing/syncthing:latest
       '';
       Restart = "on-failure";
