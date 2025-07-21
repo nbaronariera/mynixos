@@ -224,8 +224,18 @@
   # Fixes ld problems
   programs.nix-ld.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk # Para diálogos GTK
+      pkgs.kdePackages.xdg-desktop-portal-kde
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-wlr
+    ];
+  };
+
+  environment.etc."/xdg/menus/applications.menu".text =
+    builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   environment.systemPackages = with pkgs; [
     wget
@@ -236,11 +246,6 @@
     wireplumber
     btop
     pavucontrol
-    xdg-desktop-portal-gnome
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
-    kdePackages.xdg-desktop-portal-kde
-    xdg-desktop-portal-wlr
     mesa
     vulkan-loader
     vulkan-tools
