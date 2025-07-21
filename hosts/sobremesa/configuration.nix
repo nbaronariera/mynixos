@@ -19,7 +19,7 @@
   # ACTIVACIÓN DE MÓDULOS PERSONALIZADOS #
   ########################################
   my.enableSteam = true;
-  my.enableDiscord = false;
+  my.enableDiscord = true;
   my.enableGit = true;
   my.enableNixfmt = true;
   my.enableKVM = false;
@@ -31,8 +31,8 @@
   my.enableKrita = true;
   my.enableVSCode = true;
   my.enableDocker = true;
-  my.enableJS = false;
-  my.enableJava = false;
+  my.enableJS = true;
+  my.enableJava = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -230,8 +230,23 @@
   # Fixes ld problems
   programs.nix-ld.enable = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
+
+  services.dbus.enable = true;
+
+   xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk # Para diálogos GTK
+      pkgs.kdePackages.xdg-desktop-portal-kde
+      pkgs.xdg-desktop-portal-gnome
+      pkgs.xdg-desktop-portal-wlr
+    ];
+  };
+
+  environment.etc."/xdg/menus/applications.menu".text =
+    builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   environment.systemPackages = with pkgs; [
     wget
@@ -243,11 +258,6 @@
     neohtop
     btop
     pavucontrol
-    xdg-desktop-portal-gnome
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
-    kdePackages.xdg-desktop-portal-kde
-    xdg-desktop-portal-wlr
     mesa
     vulkan-loader
     vulkan-tools

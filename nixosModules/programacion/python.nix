@@ -24,6 +24,7 @@ in
       ]))
       thefuck
       pywalfox-native
+      pywal
     ];
   };
 }

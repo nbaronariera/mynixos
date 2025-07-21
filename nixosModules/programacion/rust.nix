@@ -23,8 +23,9 @@ in
       rustc
       gcc
       cargo-generate
-      rustup
       rust-analyzer
+      clippy
+      dioxus-cli
     ];
   };
 }
