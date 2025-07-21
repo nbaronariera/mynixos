@@ -234,7 +234,7 @@
     gnupg
     pinentry-curses
     wireplumber
-    btop
+    neohtop
     pavucontrol
     xdg-desktop-portal-gnome
     xdg-desktop-portal-gtk
@@ -246,6 +246,7 @@
     vulkan-tools
     neofetch
     jq
+    btop
     nh
     gnum4
     m4ri

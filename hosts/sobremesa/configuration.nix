@@ -240,6 +240,7 @@
     gnupg
     pinentry-curses
     wireplumber
+    neohtop
     btop
     pavucontrol
     xdg-desktop-portal-gnome
