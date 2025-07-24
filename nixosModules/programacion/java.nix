@@ -30,7 +30,7 @@ in
       gtk3
       maven
       gradle
-      jetbrains.idea-community
+      jetbrains.idea-ultimate
     ];
 
     environment.variables.JAVA_HOME = "${pkgs.javaPackages.openjfx17}/lib/openjdk";

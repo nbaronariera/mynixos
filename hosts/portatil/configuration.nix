@@ -52,6 +52,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.firewall.allowedUDPPortRanges = [ { from = 32768; to = 60999; } ];
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
@@ -167,13 +168,10 @@
       via
       google-chrome
       qmk
-      jetbrains.idea-ultimate
       cmatrix
       lld
-      sxiv
       obsidian
-      ripgrep
-      tui-journal
+      mixxx
     ];
   };
 
@@ -223,6 +221,9 @@
 
   # Fixes ld problems
   programs.nix-ld.enable = true;
+
+  programs.direnv.enable = true;
+  programs.direnv.nix-direnv.enable = true;
 
   xdg.portal = {
     enable = true;
