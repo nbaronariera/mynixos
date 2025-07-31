@@ -171,7 +171,7 @@
       cmatrix
       lld
       obsidian
-      mixxx
+      tauon
     ];
   };
 
@@ -225,16 +225,6 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk # Para diálogos GTK
-      pkgs.kdePackages.xdg-desktop-portal-kde
-      pkgs.xdg-desktop-portal-gnome
-      pkgs.xdg-desktop-portal-wlr
-    ];
-  };
-
   environment.etc."/xdg/menus/applications.menu".text =
     builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
@@ -278,6 +268,9 @@
     thunderbird
     fusee-nano
     gparted
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-termfilechooser
   ];
 
   programs.zsh.enable = true;

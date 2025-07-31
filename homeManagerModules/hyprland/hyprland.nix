@@ -25,8 +25,21 @@ in
 
     xdg.portal = {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-      configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
+      xdgOpenUsePortal = true;
+
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-termfilechooser
+      ];
+
+      config = {
+        common = {
+          default = [ "hyprland" "gtk" "termfilechooser" ];
+          "org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" "gtk" ];
+          "org.freedesktop.impl.portal.OpenURI" = [ "gtk" "hyprland" ];
+        };
+      };
     };
 
     home.sessionVariables.NIXOS_OZONE_WL = "1";
