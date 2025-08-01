@@ -53,6 +53,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+  networking.firewall.allowedUDPPortRanges = [ { from = 32768; to = 60999; } ];
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
@@ -168,13 +169,10 @@
       via
       google-chrome
       qmk
-      jetbrains.idea-ultimate
       cmatrix
       lld
-      sxiv
       obsidian
-      ripgrep
-      tui-journal
+      mixxx
     ];
   };
 
@@ -225,6 +223,7 @@
   # Fixes ld problems
   programs.nix-ld.enable = true;
 
+<<<<<<< HEAD
   xdg.portal.enable = true;
 
   xdg.portal.extraPortals = with pkgs; [
@@ -241,7 +240,6 @@
   xdg.portal.config.hyprland = {
     default                                  = [ "wlr" ];
     "org.freedesktop.impl.portal.FileChooser" = [ "wlr" ];
-  };
 
   environment.etc."/xdg/menus/applications.menu".text =
     builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
@@ -257,13 +255,14 @@
     gnupg
     pinentry-curses
     wireplumber
-    btop
+    neohtop
     pavucontrol
     mesa
     vulkan-loader
     vulkan-tools
     neofetch
     jq
+    btop
     nh
     gnum4
     m4ri

@@ -31,7 +31,7 @@ in
       maven
       gradle
       android-studio-full
-      jetbrains.idea-community
+      jetbrains.idea-ultimate
     ];
 
     nixpkgs.config.android_sdk.accept_license = true;

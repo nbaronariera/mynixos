@@ -250,6 +250,7 @@
     gnupg
     pinentry-curses
     wireplumber
+    neohtop
     btop
     pavucontrol
     mesa
