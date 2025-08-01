@@ -25,9 +25,19 @@ in
 
     xdg.portal = {
       enable = true;
-      extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
-      configPackages = [ pkgs.xdg-desktop-portal-hyprland ];
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-gnome
+        xdg-desktop-portal-hyprland
+        xdg-desktop-portal-termfilechooser
+      ];
+      config.common = {
+        "org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" "gnome" "gtk" ];
+        default = [ "termfilechooser" "gtk" "gnome"];
+      };
     };
+
+    home.file."shared-mime-info".source = pkgs.shared-mime-info;
 
     home.sessionVariables.NIXOS_OZONE_WL = "1";
     wayland.windowManager.hyprland = {

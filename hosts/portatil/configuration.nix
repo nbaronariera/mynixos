@@ -10,6 +10,7 @@
   ...
 }:
 {
+
   imports = [
     ./hardware-configuration.nix
     ../../nixosModules/default.nix
@@ -224,20 +225,32 @@
   # Fixes ld problems
   programs.nix-ld.enable = true;
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk # Para diálogos GTK
-      pkgs.kdePackages.xdg-desktop-portal-kde
-      pkgs.xdg-desktop-portal-gnome
-      pkgs.xdg-desktop-portal-wlr
-    ];
+  xdg.portal.enable = true;
+
+  xdg.portal.extraPortals = with pkgs; [
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-hyprland
+  ];
+
+  # Configuración de qué backend usa cada “desktop”
+  xdg.portal.config.common = {
+    "org.freedesktop.impl.portal.FileChooser" = [ "wlr" "gtk" ];
+  };
+
+  xdg.portal.config.hyprland = {
+    default                                  = [ "wlr" ];
+    "org.freedesktop.impl.portal.FileChooser" = [ "wlr" ];
   };
 
   environment.etc."/xdg/menus/applications.menu".text =
     builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   environment.systemPackages = with pkgs; [
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-hyprland
     wget
     pass-wayland
     home-manager
@@ -277,6 +290,12 @@
     fusee-nano
     gparted
   ];
+
+
+  programs.gdk-pixbuf = {
+    enable = true;
+    modulePackages = [ pkgsWithOverlay.gdk-pixbuf ];
+  };
 
   programs.zsh.enable = true;
   users.users.nbr.shell = pkgs.zsh;
