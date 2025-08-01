@@ -10,6 +10,7 @@
   ...
 }:
 {
+
   imports = [
     ./hardware-configuration.nix
     ../../nixosModules/default.nix
@@ -220,15 +221,18 @@
   nixpkgs.config.allowUnfree = true;
 
   # Fixes ld problems
-  programs.nix-ld.enable = true;
+  programs.nix-ld.enable = true
 
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
+  xdg.portal.enable = true;
 
   environment.etc."/xdg/menus/applications.menu".text =
     builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   environment.systemPackages = with pkgs; [
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-hyprland
     wget
     pass-wayland
     home-manager
@@ -272,6 +276,12 @@
     xdg-desktop-portal-hyprland
     xdg-desktop-portal-termfilechooser
   ];
+
+
+  programs.gdk-pixbuf = {
+    enable = true;
+    modulePackages = [ pkgsWithOverlay.gdk-pixbuf ];
+  };
 
   programs.zsh.enable = true;
   users.users.nbr.shell = pkgs.zsh;
