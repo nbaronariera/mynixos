@@ -53,7 +53,12 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-  networking.firewall.allowedUDPPortRanges = [ { from = 32768; to = 60999; } ];
+  networking.firewall.allowedUDPPortRanges = [
+    {
+      from = 32768;
+      to = 60999;
+    }
+  ];
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
@@ -221,7 +226,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # Fixes ld problems
-  programs.nix-ld.enable = true
+  programs.nix-ld.enable = true;
 
   xdg.portal.enable = true;
 
@@ -230,9 +235,7 @@
 
   environment.systemPackages = with pkgs; [
     xdg-desktop-portal
-    xdg-desktop-portal-gtk
     xdg-desktop-portal-wlr
-    xdg-desktop-portal-hyprland
     wget
     pass-wayland
     home-manager
@@ -275,13 +278,8 @@
     xdg-desktop-portal-gtk
     xdg-desktop-portal-hyprland
     xdg-desktop-portal-termfilechooser
+    floorp
   ];
-
-
-  programs.gdk-pixbuf = {
-    enable = true;
-    modulePackages = [ pkgsWithOverlay.gdk-pixbuf ];
-  };
 
   programs.zsh.enable = true;
   users.users.nbr.shell = pkgs.zsh;

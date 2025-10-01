@@ -24,8 +24,10 @@ in
       gcc
       cargo-generate
       rust-analyzer
+      rustfmt
       clippy
-      dioxus-cli
+      direnv
+      nix-direnv
     ];
   };
 }
