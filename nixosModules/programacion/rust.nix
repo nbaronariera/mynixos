@@ -26,13 +26,10 @@ in
       rust-analyzer
       rustfmt
       clippy
-<<<<<<< HEAD
       dioxus-cli
       rustfmt
-=======
       direnv
       nix-direnv
->>>>>>> 8bd1d3a7c001210aed9404bd15d111804ad0f428
     ];
   };
 }

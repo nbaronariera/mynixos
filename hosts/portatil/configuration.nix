@@ -229,10 +229,6 @@
   # Fixes ld problems
   programs.nix-ld.enable = true;
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 8bd1d3a7c001210aed9404bd15d111804ad0f428
   xdg.portal.enable = true;
 
   environment.etc."/xdg/menus/applications.menu".text =
