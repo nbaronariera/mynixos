@@ -30,7 +30,7 @@ in
       gtk3
       maven
       gradle
-      android-studio-full
+      android-studio
       jetbrains.idea-ultimate
     ];
 
