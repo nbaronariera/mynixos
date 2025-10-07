@@ -19,9 +19,11 @@ in
     environment.systemPackages = with pkgs; [
       python3
       sqlite
-      (python3.withPackages (ps: with ps; [
-      pip
-      ]))
+      (python3.withPackages (
+        ps: with ps; [
+          pip
+        ]
+      ))
       thefuck
       pywalfox-native
       pywal

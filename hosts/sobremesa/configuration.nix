@@ -151,10 +151,10 @@
     options = "--delete-older-than 30d";
   };
   services.udev.extraRules = ''
-      # Corne keyboard
-      SUBSYSTEM=="hidraw", ATTRS{idVendor}=="4653", ATTRS{idProduct}=="0001", MODE="0666"
-      SUBSYSTEM=="usb", ATTRS{idVendor}=="4653", ATTRS{idProduct}=="0001", MODE="0666"
-    '';
+    # Corne keyboard
+    SUBSYSTEM=="hidraw", ATTRS{idVendor}=="4653", ATTRS{idProduct}=="0001", MODE="0666"
+    SUBSYSTEM=="usb", ATTRS{idVendor}=="4653", ATTRS{idProduct}=="0001", MODE="0666"
+  '';
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nbr = {
@@ -294,7 +294,6 @@
     enable = true;
     enableSSHSupport = true;
   };
-  
 
   # List services that you want to enable:
 

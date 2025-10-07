@@ -25,14 +25,30 @@ in
 
    xdg.portal = {
       enable = true;
+      xdgOpenUsePortal = true;
+
       extraPortals = with pkgs; [
         xdg-desktop-portal-hyprland
         xdg-desktop-portal-gtk
-        xdg-desktop-portal-gnome
+        xdg-desktop-portal-termfilechooser
       ];
-      config.common = {
-        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" "gnome" "termfilechooser" ];
-        default = [ "hyprland" "gtk" "gnome" ];
+
+      config = {
+        common = {
+          default = [
+            "hyprland"
+            "gtk"
+            "termfilechooser"
+          ];
+          "org.freedesktop.impl.portal.FileChooser" = [
+            "termfilechooser"
+            "gtk"
+          ];
+          "org.freedesktop.impl.portal.OpenURI" = [
+            "gtk"
+            "hyprland"
+          ];
+        };
       };
     };
 
@@ -205,70 +221,70 @@ in
         "$fileManager" = "dolphin";
         "$menu" = "~/NixOs-Conf/homeManagerModules/hyprland/rofi/launcher.sh";
 
-        bind =
-          [
-            "$mod SHIFT, M, exec, hyprctl dispatch exit"
-            "$mod SHIFT, R, exec, hyprctl reload"
-            "$mod SHIFT, f, fullscreen"
+        bind = [
+          "$mod SHIFT, M, exec, hyprctl dispatch exit"
+          "$mod SHIFT, R, exec, hyprctl reload"
+          "$mod SHIFT, f, fullscreen"
 
-            # Apps
-            "$mod, F, exec, firefox"
-            "$mod, C, exec, code"
-            "Ctrl+Alt,Delete,exec,wlogout"
-            "Ctrl+Shift,Escape,exec,kitty -e btop"
+          # Apps
+          "$mod, F, exec, floorp"
+          "$mod, C, exec, code"
+          "$mod, L, exec, hyprlock"
+          "Ctrl+Alt,Delete,exec,wlogout"
+          "Ctrl+Shift,Escape,exec,kitty -e btop"
 
-            # Capturas
-            ", PRINT, exec, hyprshot --freeze -m output"
-            "$mod, PRINT, exec, hyprshot --freeze -m active"
-            "$mod SHIFT, PRINT, exec, hyprshot --freeze -m region"
+          # Capturas
+          ", PRINT, exec, hyprshot --freeze -m output"
+          "$mod, PRINT, exec, hyprshot --freeze -m active"
+          "$mod SHIFT, PRINT, exec, hyprshot --freeze -m region"
 
-            "$mod, T, exec, sxiv -b -g 600x200 ${config.home.homeDirectory}/Imágenes/teclado/*"
+          "$mod, T, exec, sxiv -b -g 600x200 ${config.home.homeDirectory}/Imágenes/teclado/*"
 
-            # Ajustar el volumen
-            ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%" # Subir volumen 5%
-            ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%" # Bajar volumen 5%
-            ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle" # Silenciar/activar sonido
+          # Ajustar el volumen
+          ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%" # Subir volumen 5%
+          ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%" # Bajar volumen 5%
+          ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle" # Silenciar/activar sonido
 
-            "$mod, minus, resizeactive, -20 -20"
-            "$mod, plus, resizeactive, 20 20"
+          "$mod, minus, resizeactive, -20 -20"
+          "$mod, plus, resizeactive, 20 20"
 
-            "$mod, RETURN, exec, $terminal"
-            "$mod, Y, exec, kitty -e yazi"
-            "$mod, Q, killactive,"
-            "$mod, E, exec, $fileManager"
-            "$mod, V, togglefloating,"
-            "$mod, R, exec, $menu"
-            "$mod, P, pseudo," # dwindle
-            "$mod, J, togglesplit," # dwindle
+          "$mod, RETURN, exec, $terminal"
+          "$mod, Y, exec, kitty -e yazi"
+          "$mod, Q, killactive,"
+          "$mod, E, exec, $fileManager"
+          "$mod, V, togglefloating,"
+          "$mod, R, exec, $menu"
+          "$mod, P, pseudo," # dwindle
+          "$mod, J, togglesplit," # dwindle
 
-            # Move focus with mainMod + arrow keys
-            "$mod SHIFT, H, movefocus, l"
-            "$mod SHIFT, L, movefocus, r"
-            "$mod SHIFT, K, movefocus, u"
-            "$mod SHIFT, J, movefocus, d"
+          # Move focus with mainMod + arrow keys
+          "$mod, left, movefocus, l"
+          "$mod, right, movefocus, r"
+          "$mod, up, movefocus, u"
+          "$mod, down, movefocus, d"
 
-            "$mod, L, workspace, e+1"
-            "$mod, H, workspace, e-1"
+          "$mod, RIGHT, workspace, e+1"
+          "$mod, LEFT, workspace, e-1"
 
-            # Example special workspace (scratchpad)
-            "$mod, S, exec, ${config.home.homeDirectory}/NixOs-Conf/homeManagerModules/hyprland/hyprscratch.sh kitty kitty terminal"
-          ]
-          ++ (
-            # workspaces
-            # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
-            builtins.concatLists (
-              builtins.genList (
-                i:
-                let
-                  ws = i + 1;
-                in
-                [
-                  "$mod, code:1${toString i}, workspace, ${toString ws}"
-                  "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-                ]
-              ) 9
-            )
-          );
+          # Example special workspace (scratchpad)
+          "$mod, S, exec, ${config.home.homeDirectory}/NixOs-Conf/homeManagerModules/hyprland/hyprscratch.sh kitty kitty terminal"
+        ]
+        ++ (
+          # workspaces
+          # binds $mod + [shift +] {1..9} to [move to] workspace {1..9}
+          builtins.concatLists (
+            builtins.genList (
+              i:
+              let
+                ws = i + 1;
+              in
+              [
+                "$mod, code:1${toString i}, workspace, ${toString ws}"
+                "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+              ]
+            ) 9
+          )
+        );
 
         # Move/resize windows with mainMod + LMB/RMB and dragging
         bindm = [
