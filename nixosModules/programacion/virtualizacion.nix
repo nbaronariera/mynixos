@@ -16,49 +16,34 @@ in
   };
 
   config = lib.mkIf enableKVM {
-
-    boot = {
-      kernelParams = [
-        "intel_iommu=on"
-        "iommu=pt"
-      ];
-      kernelModules = [
-        "kvm-intel"
-        "vfio_pci"
-        "vfio_iommu_type1"
-        "vfio"
-      ];
-      extraModprobeConfig = ''
-        options vfio-pci ids=10de:1f11,10de:10f9
-        options vfio-pci disable_vga=1
-      '';
-      initrd.availableKernelModules = [
-        "vfio"
-        "vfio_iommu_type1"
-        "vfio_pci"
-      ];
-    };
-
-    environment.systemPackages = with pkgs; [
-      virtio-win
-      qemu
+    # Carga siempre estos módulos:
+    boot.kernelModules = [
+      "kvm"
+      "kvm_amd"
     ];
 
-    programs.virt-manager.enable = true;
-    users.groups.libvirtd.members = [ "nbr" ];
-    virtualisation.libvirtd.enable = true;
-    virtualisation.libvirtd.qemu.runAsRoot = true;
+    # Activa AMD IOMMU (necesario si haces passthrough, pero no daña si no)
+    boot.kernelParams = [
+      "amd_iommu=on"
+      "iommu=pt"
+    ];
 
-    virtualisation.spiceUSBRedirection.enable = true;
-
-    services.spice-vdagentd.enable = true;
-    services.spice-webdavd.enable = true;
-    services.qemuGuest.enable = true;
-
-    systemd.services.libvirtd = {
-      enable = true;
-      after = [ "network.target" ];
+    # Crea el grupo kvm y añade tu usuario (reemplaza "nbr")
+    users.groups.kvm = {
+      gid = 151; # un número arbitrario, no usado
+      members = [ "nbr" ];
     };
 
+    # Paquetes para virtualización
+    environment.systemPackages = with pkgs; [
+      qemu
+      libvirt
+      virt-manager
+    ];
+
+    # Configura libvirtd (no es estrictamente necesario para /dev/kvm,
+    # pero es útil si quieres usar virt-manager más tarde)
+    virtualisation.libvirtd.enable = true;
+    users.groups.libvirtd.members = [ "nbr" ];
   };
 }

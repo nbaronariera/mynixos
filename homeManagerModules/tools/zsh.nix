@@ -22,7 +22,7 @@
 
     shellAliases = {
       ll = "ls -l";
-      rebuild = "bash /home/nbr/Documentos/NixOs-Conf/rebuild.sh";
+      rebuild = "bash /home/nbr/Documentos/rebuild.sh";
     };
 
     oh-my-zsh = {
@@ -33,10 +33,6 @@
       ];
       theme = "gnzh";
     };
-
-    initContent = "
-      (cat ~/.cache/wal/sequences &)
-      alias lzd='docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock -v /yourpath/config:/.config/jesseduffield/lazydocker lazyteam/lazydocker'
-    ";
+    
   };
 }

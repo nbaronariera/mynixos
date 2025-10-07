@@ -26,6 +26,8 @@ in
       rust-analyzer
       rustfmt
       clippy
+      dioxus-cli
+      rustfmt
       direnv
       nix-direnv
     ];

@@ -34,8 +34,6 @@ in
       jetbrains.idea-ultimate
     ];
 
-    nixpkgs.config.android_sdk.accept_license = true;
-
     environment.variables.JAVA_HOME = "${pkgs.javaPackages.openjfx17}/lib/openjdk";
     environment.variables.LD_LIBRARY_PATH = lib.mkForce "${pkgs.libGL}/lib:${pkgs.gtk3}/lib:${pkgs.glib.out}/lib:${pkgs.xorg.libXtst}/lib";
   };
