@@ -22,7 +22,6 @@
   my.enableDiscord = true;
   my.enableGit = true;
   my.enableNixfmt = true;
-  my.enableKVM = false;
   my.enableCachix = true;
   my.enableHyprlandModule = true;
   my.enableHeroic = false;
@@ -33,6 +32,7 @@
   my.enableDocker = true;
   my.enableJS = true;
   my.enableJava = true;
+  my.enableAndroid = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -155,7 +155,7 @@
       SUBSYSTEM=="hidraw", ATTRS{idVendor}=="4653", ATTRS{idProduct}=="0001", MODE="0666"
       SUBSYSTEM=="usb", ATTRS{idVendor}=="4653", ATTRS{idProduct}=="0001", MODE="0666"
     '';
-  
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nbr = {
     isNormalUser = true;
@@ -166,6 +166,7 @@
       "libvirtd"
       "docker"
       "input"
+      "kvm"
     ];
     packages = with pkgs; [
       kdePackages.dolphin
@@ -239,7 +240,7 @@
     builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
 
   environment.systemPackages = with pkgs; [
-
+    ckan
     xdg-desktop-portal
     xdg-desktop-portal-gtk
     xdg-desktop-portal-wlr
@@ -280,6 +281,7 @@
     neofetch
     usbutils
     via
+    ripgrep
   ];
 
   programs.zsh.enable = true;

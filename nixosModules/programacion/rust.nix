@@ -26,6 +26,7 @@ in
       rust-analyzer
       clippy
       dioxus-cli
+      rustfmt
     ];
   };
 }

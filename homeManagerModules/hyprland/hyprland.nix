@@ -23,19 +23,19 @@ in
 
   config = lib.mkIf enableHyprland {
 
-    xdg.portal = {
+   xdg.portal = {
       enable = true;
       extraPortals = with pkgs; [
+        xdg-desktop-portal-hyprland
         xdg-desktop-portal-gtk
         xdg-desktop-portal-gnome
-        xdg-desktop-portal-hyprland
-        xdg-desktop-portal-termfilechooser
       ];
       config.common = {
-        "org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" "gnome" "gtk" ];
-        default = [ "termfilechooser" "gtk" "gnome"];
+        "org.freedesktop.impl.portal.FileChooser" = [ "gtk" "gnome" "termfilechooser" ];
+        default = [ "hyprland" "gtk" "gnome" ];
       };
     };
+
 
     home.file."shared-mime-info".source = pkgs.shared-mime-info;
 
@@ -214,7 +214,6 @@ in
             # Apps
             "$mod, F, exec, firefox"
             "$mod, C, exec, code"
-            "$mod, L, exec, hyprlock"
             "Ctrl+Alt,Delete,exec,wlogout"
             "Ctrl+Shift,Escape,exec,kitty -e btop"
 
@@ -243,13 +242,13 @@ in
             "$mod, J, togglesplit," # dwindle
 
             # Move focus with mainMod + arrow keys
-            "$mod, left, movefocus, l"
-            "$mod, right, movefocus, r"
-            "$mod, up, movefocus, u"
-            "$mod, down, movefocus, d"
+            "$mod SHIFT, H, movefocus, l"
+            "$mod SHIFT, L, movefocus, r"
+            "$mod SHIFT, K, movefocus, u"
+            "$mod SHIFT, J, movefocus, d"
 
-            "$mod, RIGHT, workspace, e+1"
-            "$mod, LEFT, workspace, e-1"
+            "$mod, L, workspace, e+1"
+            "$mod, H, workspace, e-1"
 
             # Example special workspace (scratchpad)
             "$mod, S, exec, ${config.home.homeDirectory}/NixOs-Conf/homeManagerModules/hyprland/hyprscratch.sh kitty kitty terminal"

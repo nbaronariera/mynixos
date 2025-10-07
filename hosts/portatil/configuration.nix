@@ -124,9 +124,10 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  services.xserver.libinput.enable = true;
 
-  system.autoUpgrade = {
+
+    system.autoUpgrade = {
     enable = true;
     persistent = true;
     dates = "daily";
@@ -223,7 +224,7 @@
   # Fixes ld problems
   programs.nix-ld.enable = true;
 
-<<<<<<< HEAD
+
   xdg.portal.enable = true;
 
   xdg.portal.extraPortals = with pkgs; [
@@ -287,7 +288,7 @@
     protontricks
     thunderbird
     fusee-nano
-    gparted
+    ripgrep
   ];
 
 
