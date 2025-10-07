@@ -23,7 +23,7 @@ in
 
   config = lib.mkIf enableHyprland {
 
-   xdg.portal = {
+    xdg.portal = {
       enable = true;
       xdgOpenUsePortal = true;
 
@@ -51,7 +51,6 @@ in
         };
       };
     };
-
 
     home.file."shared-mime-info".source = pkgs.shared-mime-info;
 
